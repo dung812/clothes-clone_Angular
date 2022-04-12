@@ -14,7 +14,6 @@ SwiperCore.use([Autoplay, Pagination, Navigation]);
 })
 export class MainPageComponent implements OnInit {
 
-
   slidesStore = [
     {
       id:1,

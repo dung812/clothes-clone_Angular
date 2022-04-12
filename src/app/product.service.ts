@@ -8,7 +8,7 @@ export class ProductService {
   constructor() {}
 
   getProducts() {
-    const products :PRODUCT[] = [
+    const products: PRODUCT[]  = [
       { id: 1, name: "side pants II",image: "1.jpeg", price: 449000, promotionPrice: 404100, promotion: 10, color: 2, gender: "him"},
       { id: 2, name: "great life tee-2022",image: "2.jpeg", price: 179000, promotionPrice: 161100, promotion: 10, color: 2, gender: "him"},
       { id: 3, name: "cuban basic shirt",image: "3.jpeg", price: 399000, promotionPrice: 359100, promotion: 10, color: 3, gender: "him"},

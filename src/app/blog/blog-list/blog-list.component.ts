@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./blog-list.component.scss']
 })
 export class BlogListComponent implements OnInit {
-
+  stringHim = "Him clothes";
+  stringHer = "Her clothes";
   constructor() { }
 
   ngOnInit(): void {
