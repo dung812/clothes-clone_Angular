@@ -1,5 +1,38 @@
-<a routerLink="/product" routerLinkActive="active">product</a>
-<a routerLink="/blog" routerLinkActive="active">blog</a>
-<a routerLink="/cart" routerLinkActive="active"> <i class="uil uil-shopping-bag"></i>cart</a>
-<a routerLink="/checkout" routerLinkActive="active">checkout</a>
-<router-outlet></router-outlet>
+<header class="fixed top-0 left-0 w-full h-14 z-50">
+    <div class="bg-black mx-auto text-center">
+        <p class="text-white font-semibold text-xs sm:text-sm tracking-wider py-1">Freeship nội thành cho đơn từ 300.000 & Freeship toàn quốc cho đơn từ 600.000</p>
+    </div>
+    <div class="flex justify-between items-center px-4 md:px-16 bg-white">
+        <div (click)="showMenuMobile()" class="cursor-pointer sm:hidden" id="burger">
+            <i class="uil uil-bars text-2xl"></i>
+        </div>
+        <div>
+            <a routerLink="/mainpage" class="text-4xl font-semibold sm:hidden">ssstutter</a>
+            <a routerLink="/mainpage" class="hidden sm:block">
+                <img src="../../assets/images/favicon/icon.png" alt="" class="w-7 h-7">
+            </a>
+        </div>        
+        <div class="hidden sm:block test" id="menu">
+            <div class="flex justify-between bg-white border border-gray-200 p-5 sm:hidden">
+                <a routerLink="/mainpage" class="text-4xl font-semibold">ssstutter</a>
+                <i (click)="closeMenuMobile()" class="uil uil-times text-4xl cursor-pointer" id="close"></i>
+            </div>
+            <ul class="nav sm:flex sm:flex-row sm:justify-start sm:items-center">
+                <li class="nav_item border border-gray-200 sm:border-0"><a class="p-5 block sm:p-0" routerLink="/product">Nam</a></li>
+                <li class="nav_item border border-gray-200 sm:border-0"><a class="p-5 block sm:p-0" routerLink="/product">Nữ</a></li>
+                <li class="nav_item border border-gray-200 sm:border-0"><a class="p-5 block sm:p-0" routerLink="/blog">Blog</a></li>
+            </ul>
+        </div>
+
+        <div class="flex flex-row justify-start items-center">
+            <div class="px-3 py-2 cursor-pointer hover:bg-gray-100">
+                <i class="uil uil-search text-2xl"></i>
+            </div>
+            <div class="px-3 py-2 relative cursor-pointer hover:bg-gray-100">
+                <a routerLink="/cart"><i class="uil uil-shopping-bag text-2xl"></i><span class="inline-block absolute text-xs tracking-bigger font-bold">(1)</span></a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<router-outlet></router-outlet> 

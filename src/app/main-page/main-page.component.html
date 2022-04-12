@@ -1,1 +1,32 @@
-<p>Đây là trang chủ</p>
+<div class="block mt-[84px]">
+    <app-carousel [slides]="slidesStore"></app-carousel>
+
+    <!--============================== CATEGORIES BANNER ==============================-->
+    <section class="categories__banner" class="grid grid-cols-2 gap-3 md:gap-5 py-4">
+        <div class="hover:opacity-60">
+            <a routerLink="/product">
+                <img src="../../../assets/images/main-page/for-him.jpeg" alt="">
+            </a>
+        </div>
+        <div class="hover:opacity-60">
+            <a routerLink="/product">
+                <img src="../../../assets/images/main-page/for-her.jpeg" alt="">
+            </a>
+        </div>
+    </section>
+    
+    <section class="what_new py-20">
+        <div class="container mx-auto px-6">
+            <p class="text-2xl mb-4 md:text-5xl font-semibold uppercase text-center cursor-pointer">what's new</p>
+        </div>
+    </section>
+    
+    <section class="style_pick py-20 bg-section">
+        <div class="container mx-auto px-6">
+            <p class="text-2xl mb-4 text-white md:text-5xl font-semibold uppercase text-center cursor-pointer">style pick</p>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil modi mollitia, culpa dolorum explicabo enim veritatis aliquid vitae quia at ipsa. Ea sit impedit numquam, totam voluptatum a beatae itaque?</p>
+        </div>
+    </section>
+    
+</div>
+

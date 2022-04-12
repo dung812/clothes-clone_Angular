@@ -14,6 +14,8 @@ import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { BlogListComponent } from './blog/blog-list/blog-list.component';
 import { BlogDetailComponent } from './blog/blog-detail/blog-detail.component';
+import { SwiperModule } from 'swiper/angular';
+import { CarouselComponent } from './main-page/carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -28,11 +30,13 @@ import { BlogDetailComponent } from './blog/blog-detail/blog-detail.component';
     CheckoutComponent,
     BlogListComponent,
     BlogDetailComponent,
+    CarouselComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    SwiperModule
   ],
   providers: [],
   bootstrap: [AppComponent]
