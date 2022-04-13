@@ -1,0 +1,44 @@
+<section class="what_new py-20">
+    <div class="container mx-auto px-6">
+        <p class="text-2xl mb-4 md:text-5xl font-semibold uppercase text-center cursor-pointer">what's new</p>
+
+        <div class="flex justify-center items-center mb-5">
+            <div class="category-item mr-1 active" (click)="activeCategory()">For him<span class="absolute bottom-[38px] right-[5px] bg-red-600 w-[5px] h-[5px] rounded-full"></span></div>
+            <div class="category-item">For her</div>
+        </div>
+
+        <swiper class="mySwiper hidden"
+            [slidesPerView]="2.5"
+            [spaceBetween]="20"
+            [breakpoints]="{
+                '640': {
+                slidesPerView: 3.5,
+                spaceBetween: 20
+                },
+                '768': {
+                slidesPerView: 4.5,
+                spaceBetween: 20
+                },
+                '1024': {
+                slidesPerView: 4.5,
+                spaceBetween: 20
+                }
+            }"
+            [loop]="true"
+            [autoplay]="{
+            delay: 1500,
+            disableOnInteraction: false
+            }">
+
+        <ng-template swiperSlide *ngFor="let product of productHim">
+            <a routerLink="/product/product-detail">
+                <img [src]="product.image" alt="">
+            </a>
+        </ng-template>
+
+        </swiper>
+
+    </div>
+</section>
+
+
