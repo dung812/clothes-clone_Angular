@@ -1,6 +1,5 @@
-import { ProductService } from './../product.service';
 import { Component, OnInit } from '@angular/core';
-import { PRODUCT } from '../models/product';
+
 
 @Component({
   selector: 'app-page-not-found',
@@ -9,7 +8,7 @@ import { PRODUCT } from '../models/product';
 })
 export class PageNotFoundComponent implements OnInit {
   
-  constructor(private _productService: ProductService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }

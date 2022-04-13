@@ -16,6 +16,7 @@ import { BlogListComponent } from './blog/blog-list/blog-list.component';
 import { BlogDetailComponent } from './blog/blog-detail/blog-detail.component';
 import { SwiperModule } from 'swiper/angular';
 import { CarouselComponent } from './main-page/carousel/carousel.component';
+import { SlideProductSmallComponent } from './main-page/slide-product-small/slide-product-small.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { CarouselComponent } from './main-page/carousel/carousel.component';
     BlogListComponent,
     BlogDetailComponent,
     CarouselComponent,
+    SlideProductSmallComponent,
   ],
   imports: [
     BrowserModule,
