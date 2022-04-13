@@ -940,6 +940,10 @@ module.exports = {
         50: "50",
       },
     },
+    //---
+    Container: {
+      "center": "true",
+    },
     variantOrder: [
       "first",
       "last",

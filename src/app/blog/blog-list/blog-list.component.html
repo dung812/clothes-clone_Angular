@@ -1,6 +1,73 @@
-<p>blog list work</p>
-
-
-<a routerLink="/blog/blog-detail" class="p-4 bg-blue-500 text-white inline-block">blog detail</a>
-
+<div>
+    <section class="container mx-auto px-36 grid grid-cols-1 gap-11 md:grid-cols-3">
+        <div class="text-xl uppercase text-center font-medium">
+            <a routerLink="/blog/blog-detail">
+                <span class="ssstory_1 ssstory hover:opacity-50"></span>
+            </a>
+            <a routerLink="/blog/blog-detail">
+                <span class="hover:text-gray-500 ">
+                    <h2>6 Bí quyết giúp outfit của bạn trở nên nổi bật hơn</h2>
+                </span>
+            </a>
+        </div>
+        <div class="text-xl text-center font-medium ">
+            <a routerLink="/blog/blog-detail">
+                <span class="ssstory_2 ssstory hover:opacity-50"></span>
+            </a>
+            <a routerLink="/blog/blog-detail">
+                <span class="hover:text-gray-500 "><h2>Những items làm từ vải Linen mà bạn không thể bỏ qua</h2></span>
+            </a>
+        </div>
+        <div class="text-xl text-center font-medium">
+            <a routerLink="/blog/blog-detail">
+                <span class="ssstory_3 ssstory hover:opacity-50"></span>
+            </a>
+           <a routerLink="/blog/blog-detail">
+                <span class="hover:text-gray-500"><h2>6 mẹo giúp tăng tuổi thọ của quần áo hơn 3 năm</h2></span>
+            </a>
+        </div>
+    </section>
+    <section class="container mx-auto px-10 p-2 category mt-36 mb-16 text-center md:px-36">
+        <span class="text-lg md:mb-1 md:mt-2 md:text-3xl font-semibold uppercase cursor-pointer"><h2 class="pb-3 md:pt-10">Danh mục</h2></span>
+        <ul class="grid grid-cols-2 gap-4 md:pb-16 md:gap-10 md:mt-14 md:mb-14 md:grid-cols-4">
+            <li class="font-semibold text-sm md:text-base text-gray-400 ">
+                <a routerLink="">
+                    <span class="category-list category-list-1 mb-2">     
+                    </span>
+                </a>
+                <a routerLink="">tình cảm</a>
+            </li>
+            <li class="font-semibold text-sm md:text-base text-gray-400">
+                <a routerLink="">
+                    <span class="category-list category-list-2 mb-2">     
+                    </span>
+                </a>
+                <a routerLink="">quản lí tài chính</a>
+            </li>
+            <li class="font-semibold text-sm md:text-base text-gray-400">
+                <a routerLink="">
+                    <span class="category-list category-list-3 mb-2">     
+                    </span>
+                </a>
+                <a routerLink="">phát triển bản thân</a>
+            </li>
+            <li class="font-semibold text-sm md:text-base text-gray-400">
+                <a routerLink="">
+                    <span class="category-list category-list-4 mb-2">     
+                    </span>
+                </a>
+                <a routerLink="">Công việc & sự nghiệp</a>
+            </li>
+        </ul>
+    </section>
+    <section class="container ">
+        <ul class="grid grid-cols-2 gap-10 "> 
+            <li class="">
+                <a routerLink="">
+                    <span class="category-list-6"></span>
+                </a>
+            </li>
+        </ul>
+    </section>
+</div>
 <router-outlet></router-outlet>
