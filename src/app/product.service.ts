@@ -17,14 +17,14 @@ export class ProductService {
       { id: 6, name: "cropped denim pants", image: "../../../assets/images/product/for-him/him-6.jpeg", alt: "clothesforhim", price: 449000, color: 1, gender: "him"},
       { id: 7, name: "Mr.S Teddy Polo Shirt", image: "../../../assets/images/product/for-him/him-7.jpeg", alt: "clothesforhim", price: 479000, color: 4, gender: "him"},
       { id: 8, name: "Premium Linen Shirt", image: "../../../assets/images/product/for-him/him-8.jpeg", alt: "clothesforhim", price: 419000, color: 1, gender: "him"},
-      { id: 9, name: "Lady Knit" , image: "../../../assets/images/product/for-her/her-1a.jpeg", alt: "clothesforher", price: 379.000, color: 2, gender: "her"},
+      { id: 9, name: "Lady Knit" , image: "../../../assets/images/product/for-her/her-1a.jpeg", alt: "clothesforher", price: 379000, color: 2, gender: "her"},
       { id: 10, name: "Compo Bodysuit" , image: "../../../assets/images/product/for-her/her-2.jpeg", alt: "clothesforhim", price: 319000, color: 2, gender: "her"},
       { id: 11, name: "Flaming Jacket" , image: "../../../assets/images/product/for-her/her-3.jpeg", alt: "clothesforhim", price: 899000, color: 3, gender: "her"},
-      { id: 12, name: "Semi-Set Shirt" , image: "../../../assets/images/product/for-her/her-4.jpeg", alt: "clothesforhim", price: 349.000, color: 1, gender: "her"},      
-      { id: 13, name: "Spaghetti Strap Dress" , image: "../../../assets/images/product/for-her/her-5.jpeg", alt: "clothesforhim", price: 349.000, color: 2, gender: "her"},  
-      { id: 14, name: "Red Gingham Dress" , image: "../../../assets/images/product/for-her/her-6.jpg", alt: "clothesforhim", price: 549.000, color: 2, gender: "her"}, 
-      { id: 13, name: "Pin Shirt" , image: "../../../assets/images/product/for-her/her-7.jpg", alt: "clothesforhim", price: 249.000, color: 1, gender: "her"}, 
-      { id: 13, name: "Angie Dress" , image: "../../../assets/images/product/for-her/her-8.png", alt: "clothesforhim", price: 479.000, color: 3, gender: "her"},     
+      { id: 12, name: "Semi-Set Shirt" , image: "../../../assets/images/product/for-her/her-4.jpeg", alt: "clothesforhim", price: 349000, color: 1, gender: "her"},      
+      { id: 13, name: "Spaghetti Strap Dress" , image: "../../../assets/images/product/for-her/her-5.jpeg", alt: "clothesforhim", price: 349000, color: 2, gender: "her"},  
+      { id: 14, name: "Red Gingham Dress" , image: "../../../assets/images/product/for-her/her-6.jpg", alt: "clothesforhim", price: 549000, color: 2, gender: "her"}, 
+      { id: 13, name: "Pin Shirt" , image: "../../../assets/images/product/for-her/her-7.jpg", alt: "clothesforhim", price: 249000, color: 1, gender: "her"}, 
+      { id: 13, name: "Angie Dress" , image: "../../../assets/images/product/for-her/her-8.png", alt: "clothesforhim", price: 479000, color: 3, gender: "her"},     
     ];
     return products;
   }

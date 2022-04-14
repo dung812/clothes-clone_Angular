@@ -1,28 +1,223 @@
 <div class="block mt-[84px]">
-    <app-carousel [slides]="slidesStore"></app-carousel>
-
+    <!--============================== CAROUSEL ==============================-->
+    <swiper class="mySwiper"
+            [loop]="true"
+            [spaceBetween]="30"
+            [centeredSlides]="true"
+            [autoplay]="{
+            delay: 2500,
+            disableOnInteraction: false
+            }">
+        <ng-template swiperSlide *ngFor="let slide of slides">
+            <a [routerLink]="slide.url" class="h-screen"><img [src]="slide.srcDesktop" [alt]="slide.alt" /></a>
+        </ng-template>
+    </swiper>
+  
     <!--============================== CATEGORIES BANNER ==============================-->
     <section class="categories__banner" class="grid grid-cols-2 gap-3 md:gap-5 py-4">
         <div class="hover:opacity-60">
             <a routerLink="/product">
-                <img src="../../../assets/images/main-page/for-him.jpeg" alt="">
+                <img src="../../../assets/images/main-page/for-him.jpeg" alt="image-banner-him">
             </a>
         </div>
         <div class="hover:opacity-60">
             <a routerLink="/product">
-                <img src="../../../assets/images/main-page/for-her.jpeg" alt="">
+                <img src="../../../assets/images/main-page/for-her.jpeg" alt="image-banner-her">
             </a>
         </div>
     </section>
     
-    <app-slide-product-small></app-slide-product-small>
+    <!--============================== WHAT NEW ==============================--> 
+    <section class="py-14" id="what_new">
+        <div class="md:container md:mx-auto md:px-6">
+            <p class="text-2xl mb-4 md:text-5xl font-semibold uppercase text-center cursor-pointer">what's new</p>
     
-    <section class="style_pick py-20 bg-section">
-        <div class="container mx-auto px-6">
-            <p class="text-2xl mb-4 text-white md:text-5xl font-semibold uppercase text-center cursor-pointer">style pick</p>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil modi mollitia, culpa dolorum explicabo enim veritatis aliquid vitae quia at ipsa. Ea sit impedit numquam, totam voluptatum a beatae itaque?</p>
+            <div class="flex justify-center items-center mb-5">
+                <div class="category-item mr-5 active" (click)="activeCategory($event)" data-title="him">For him</div>
+                <div class="category-item" (click)="activeCategory($event)" data-title="her">For her</div>
+            </div>
+    
+            <swiper data-content="him" class="sliderProduct"
+                [slidesPerView]="2.5"
+                [spaceBetween]="20"
+                [breakpoints]="{
+                    '640': {
+                    slidesPerView: 3.5,
+                    spaceBetween: 20
+                    },
+                    '768': {
+                    slidesPerView: 4.5,
+                    spaceBetween: 20
+                    },
+                    '1024': {
+                    slidesPerView: 4.5,
+                    spaceBetween: 20
+                    }
+                }"
+                [loop]="true"
+                [autoplay]="{
+                delay: 1500,
+                disableOnInteraction: false
+                }">
+    
+            <ng-template swiperSlide *ngFor="let product of productForHim">
+                <div>
+                    <a routerLink="/product/product-detail">
+                        <img [src]="product.image" alt="" class="hover:opacity-80">
+                    </a>
+                    <div class="pt-3 text-left">
+                        <p class="font-semibold text-base">{{ product.name | titlecase }}</p>
+                        <p class="font-semibold text-lg">{{ product.price | currency:'VND' }}</p>
+                        <p class="text-gray-400 text-xs">+{{ product.color }} màu</p>
+                    </div>
+                </div>
+            </ng-template>
+            </swiper>
+    
+            <swiper data-content="her" class="sliderProduct hidden"
+                    [slidesPerView]="2.5"
+                    [spaceBetween]="20"
+                    [breakpoints]="{
+                        '640': {
+                        slidesPerView: 3.5,
+                        spaceBetween: 20
+                        },
+                        '768': {
+                        slidesPerView: 4.5,
+                        spaceBetween: 20
+                        },
+                        '1024': {
+                        slidesPerView: 4.5,
+                        spaceBetween: 20
+                        }
+                    }"
+                    [loop]="true"
+                    [autoplay]="{
+                    delay: 1500,
+                    disableOnInteraction: false
+                    }">
+    
+                <ng-template swiperSlide *ngFor="let product of productForHer">
+                    <div>
+                        <a routerLink="/product/product-detail">
+                            <img [src]="product.image" alt="">
+                        </a>
+                        <div class="pt-3 text-left">
+                            <p class="font-semibold text-base">{{ product.name | titlecase }}</p>
+                            <p class="font-semibold text-lg">{{ product.price | currency:'VND' }}</p>
+                            <p class="text-gray-400 text-xs">+{{ product.color }} màu</p>
+                        </div>
+                    </div>
+                </ng-template>
+            </swiper>
+
         </div>
     </section>
     
+    <!--=============================== STYLE LIST ===============================-->
+    <section class="py-14 bg-section" id="style_pick">
+        <div class="md:container md:mx-auto md:px-6">
+            <p class="text-2xl mb-14 text-white md:text-5xl font-semibold uppercase text-center cursor-pointer">style pick</p>
+            <swiper
+            [slidesPerView]="2"
+            [spaceBetween]="20"
+            [breakpoints]="{
+                '640': {
+                slidesPerView: 3,
+                spaceBetween: 30
+                }
+            }"
+            [navigation]="true"
+            [loop]="true"
+            [autoplay]="{
+            delay: 1500,
+            disableOnInteraction: false
+            }"
+            class="mySwiper">
+            <ng-template swiperSlide class="hover:opacity-80" *ngFor="let product of productSlide">
+                <a routerLink="product/product-detail">
+                    <img [src]="product.image" [alt]="product.alt">
+                </a>
+            </ng-template>
+          </swiper>
+        </div>
+    </section>
+    
+    <!--=============================== WEEKLY BEST ===============================-->
+    <section class="py-14" id="weekly_best">
+        <div class="md:container md:mx-auto md:px-6">
+
+            <p class="text-2xl mb-4 md:text-5xl font-semibold uppercase text-center cursor-pointer">what's new</p>
+            <div class="flex justify-center items-center mb-5">
+                <div class="tabs-heading mr-5 active" (click)="activeProduct($event)" data-title="him">For him</div>
+                <div class="tabs-heading" (click)="activeProduct($event)" data-title="her">For her</div>
+            </div>
+            
+            <div data-content="him" class="tabs-content">
+                <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 md:grid-cols-4 md:gap-5">
+                    <a routerLink="/product/product-detail" class="block mt-3" *ngFor="let product of productForHim">
+                        <img [src]="product.image" alt="product.alt" class="hover:opacity-80">
+                        <div class="pt-3 text-left">
+                            <p class="font-semibold text-base">{{ product.name | titlecase }}</p>
+                            <p class="font-semibold text-lg">{{ product.price | currency:'VND' }}</p>
+                            <p class="text-gray-400 text-xs">+{{ product.color }} màu</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div data-content="her" class="tabs-content hidden">
+                <div  class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 md:grid-cols-4 md:gap-5">
+                    <a routerLink="/product/product-detail" class="block mt-3" *ngFor="let product of productForHer">
+                        <img [src]="product.image" alt="product.alt" class="hover:opacity-80">
+                        <div class="pt-3 text-left">
+                            <p class="font-semibold text-base">{{ product.name | titlecase }}</p>
+                            <p class="font-semibold text-lg">{{ product.price | currency:'VND' }}</p>
+                            <p class="text-gray-400 text-xs">+{{ product.color }} màu</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!--=============================== SSSTORY ===============================-->
+    <section class="py-14" id="ssstory">
+        <div class="md:container md:mx-auto md:px-6">
+
+            <p class="text-2xl mb-4 md:text-5xl font-semibold uppercase text-center cursor-pointer">ssstory</p>
+            <div class="grid grid-cols-2 gap-10">
+                <div>
+                    <a routerLink="/blog/blog-detail" class="blog-item mt-5 block">
+                        <div class="blog-img_item" style="background-image: url(../../assets/images/main-page/ssstory/1644568834577.jpeg)"></div>
+                        <p class="uppercase font-semibold text-xl tracking-widest mt-4">6 BÍ QUYẾT PHỐI MÀU GIÚP OUTFIT CỦA BẠN TRỞ NÊN NỔI BẬT HƠN</p>
+                    </a>
+                </div>
+                <div>
+                    <a routerLink="/blog/blog-detail" class="blog-item mt-5 block">
+                        <div class="blog-img_item"style="background-image: url(../../assets/images/main-page/ssstory/1636339479194.jpeg)"></div>
+                        <p class="uppercase font-semibold text-xl tracking-widest mt-4">6 mẹo giúp tăng tuổi thọ của quần áo hơn 3 năm</p>
+                    </a>
+                </div>
+                <div>
+                    <a routerLink="/blog/blog-detail" class="blog-item mt-6 block">
+                        <div class="blog-img_item"style="background-image: url(../../assets/images/main-page/ssstory/1636339044098.jpeg)"></div>
+                        <p class="uppercase font-semibold text-xl tracking-widest mt-4">Những items làm từ vải Linen mà bạn không thể bỏ qua</p>
+                    </a>
+                </div>
+                <div>
+                    <a routerLink="/blog/blog-detail" class="blog-item mt-6 block">
+                        <div class="blog-img_item"style="background-image: url(../../assets/images/main-page/ssstory/1636338432145.jpeg)"></div>
+                        <p class="uppercase font-semibold text-xl tracking-widest mt-4">5 mẹo bất hủ để bảo quản chiếc áo trắng của bạn</p>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+
 </div>
 
