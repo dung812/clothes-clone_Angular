@@ -45,6 +45,12 @@ export class MainPageComponent implements OnInit {
     { id: "5", name: "sss. sweatset", image: "../../../assets/images/main-page/style-pick/5.jpeg", alt: "quan nam", price: "299000", color: "2"},
     { id: "6", name: "prince flannel shirt", image: "../../../assets/images/main-page/style-pick/6.jpeg", alt: "ao nam", price: "329000", color: "3"},
   ];
+  public blogs = [
+    { id: "1", title: "6 BÍ QUYẾT PHỐI MÀU GIÚP OUTFIT CỦA BẠN TRỞ NÊN NỔI BẬT HƠN", image: "background-image:url(../../assets/images/main-page/ssstory/1644568834577.jpeg)" },
+    { id: "2", title: "6 mẹo giúp tăng tuổi thọ của quần áo hơn 3 năm", image: "background-image:url(../../assets/images/main-page/ssstory/1636339479194.jpeg)" },
+    { id: "3", title: "Những items làm từ vải Linen mà bạn không thể bỏ qua", image: "background-image:url(../../assets/images/main-page/ssstory/1636339044098.jpeg)" },
+    { id: "4", title: "5 mẹo bất hủ để bảo quản chiếc áo trắng của bạn", image: "background-image:url(../../assets/images/main-page/ssstory/1636338432145.jpeg)" },
+  ]
 
   constructor(private _productService: ProductService) { }
 
