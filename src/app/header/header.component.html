@@ -18,8 +18,9 @@
                 <i (click)="closeMenuMobile()" class="uil uil-times text-4xl cursor-pointer" id="close"></i>
             </div>
             <ul class="nav sm:flex sm:flex-row sm:justify-start sm:items-center">
-                <li class="nav_item border border-gray-200 sm:border-0"><a class="p-5 block sm:p-0" routerLink="/product">Nam</a></li>
-                <li class="nav_item border border-gray-200 sm:border-0"><a class="p-5 block sm:p-0" routerLink="/product">Nữ</a></li>
+                <div *ngFor="let gender of genderList">
+                    <li class="nav_item border border-gray-200 sm:border-0 cursor-pointer" (click)="onSelect(gender)">{{ gender.title }}</li>
+                </div>
                 <li class="nav_item border border-gray-200 sm:border-0"><a class="p-5 block sm:p-0" routerLink="/blog">Blog</a></li>
             </ul>
         </div>

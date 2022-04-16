@@ -1,8 +1,11 @@
 import { PRODUCT } from './../models/product';
 import { ProductService } from './../product.service';
 import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { SwiperComponent } from "swiper/angular";
 import SwiperCore, { Autoplay, Pagination, Navigation } from "swiper";
+
+
 
 // install Swiper modules
 SwiperCore.use([Autoplay, Pagination, Navigation]);
@@ -14,7 +17,10 @@ SwiperCore.use([Autoplay, Pagination, Navigation]);
   styleUrls: ['./main-page.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
+
 export class MainPageComponent implements OnInit {
+
+  genderList: any = [];
 
   public productForHim: PRODUCT[] = [];
   public productForHer: PRODUCT[] = [];
@@ -52,9 +58,10 @@ export class MainPageComponent implements OnInit {
     { id: "4", title: "5 mẹo bất hủ để bảo quản chiếc áo trắng của bạn", image: "background-image:url(../../assets/images/main-page/ssstory/1636338432145.jpeg)" },
   ]
 
-  constructor(private _productService: ProductService) { }
+  constructor(private _productService: ProductService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.genderList = this._productService.getGenderRouting();
     this.productForHim = this._productService.getProducts().filter(e => e.gender === "him");
     this.productForHer = this._productService.getProducts().filter(e => e.gender === "her");
   };
@@ -88,5 +95,11 @@ export class MainPageComponent implements OnInit {
 
     tabsHeading.forEach(item =>item.classList.remove("active"));
     event.target.classList.add("active");
+  }
+
+  onSelect(gender: any) {
+    this.router.navigate(['product', gender.name]);
+    // this.router.navigate(['product',{gender: gender.name}]);
+    // this.router.navigate([product.gender], {relativeTo: this.route});
   }
 }

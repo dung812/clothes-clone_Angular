@@ -28,4 +28,10 @@ export class ProductService {
     ];
     return products;
   }
+  getGenderRouting() {
+    return [
+      {id: 1, title: "Nam", name: "for-him", image: "../../../assets/images/main-page/for-him.jpeg", alt: "image-banner-him"},
+      {id: 2, title: "Nữ", name: "for-her", image: "../../../assets/images/main-page/for-her.jpeg", alt: "image-banner-her"},
+    ];
+  }
 }

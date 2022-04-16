@@ -1,3 +1,9 @@
-<p>product list work!</p>
-<a routerLink="/product/product-detail" class="p-4 bg-blue-500 text-white inline-block">product detail</a>
-<router-outlet></router-outlet>
+<h1>{{ productGender }}</h1>
+
+<ul>
+    <li *ngFor="let product of products">
+        <img [src]="product.image" alt="" width="20%">
+        {{ product.gender }}
+    </li>
+
+</ul>

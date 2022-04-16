@@ -15,20 +15,11 @@ const routes: Routes = [
     { path: 'mainpage', component: MainPageComponent },
     { path: 'cart', component: CartComponent },
     { path: 'checkout', component: CheckoutComponent },
-    { 
-      path: 'product', 
-      component: ProductListComponent,
-      children: [
-        { path: 'product-detail', component: ProductDetailComponent }
-      ]
-     },
-     { 
-      path: 'blog', 
-      component: BlogListComponent,
-      children: [
-        { path: 'blog-detail', component: BlogDetailComponent }
-      ]
-     },
+    { path: 'product/:gender', component: ProductListComponent },
+    { path: 'product-detail', component: ProductDetailComponent, },
+    { path: 'blog', component: BlogListComponent },
+    { path: 'blog-detail', component: BlogDetailComponent },
+    { path: "pagenotfound", component: PageNotFoundComponent },
     { path: "**", component: PageNotFoundComponent },
 ];
 

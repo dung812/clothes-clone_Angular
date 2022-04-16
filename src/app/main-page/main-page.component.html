@@ -15,15 +15,10 @@
   
     <!--============================== CATEGORIES BANNER ==============================-->
     <section class="categories__banner" class="grid grid-cols-2 gap-3 md:gap-5 py-4">
-        <div class="hover:opacity-60">
-            <a routerLink="/product">
-                <img src="../../../assets/images/main-page/for-him.jpeg" alt="image-banner-him">
-            </a>
-        </div>
-        <div class="hover:opacity-60">
-            <a routerLink="/product">
-                <img src="../../../assets/images/main-page/for-her.jpeg" alt="image-banner-her">
-            </a>
+        <div class="hover:opacity-60" *ngFor="let gender of genderList">
+            <div (click)="onSelect(gender)">
+                <img [src]="gender.image" [alt]="gender.alt">
+            </div>
         </div>
     </section>
     
