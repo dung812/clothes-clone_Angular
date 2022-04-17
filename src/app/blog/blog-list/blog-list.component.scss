@@ -1,7 +1,7 @@
 :host {
-  display: block;
-  margin-top: 84px;
+  @apply block mt-[72px] md:mt-[84px]
 }
+
 .ssstory_1{
   background-image: url(../../../assets/images/main-page/ssstory/1644568834577.jpeg);
 }

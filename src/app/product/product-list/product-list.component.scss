@@ -1,5 +1,71 @@
 :host {
-    display: block;
-    margin-top: 84px;
+    @apply block mt-[72px] sm:mt-[84px]
 }
-  
+
+.category_item.active {
+    @apply block absolute bg-white border shadow-sm px-5 py-3
+}
+
+.filter_list {
+    @apply fixed overflow-x-auto pt-6 sm:pt-0 w-full h-full top-0 mt-[72px] sm:mt-0 translate-x-[-100%] opacity-0 sm:opacity-100 sm:translate-x-0 md:block sm:h-auto sm:w-auto sm:relative ease-in duration-300 text-sm
+}
+.filter_list.active {
+    @apply translate-x-0 opacity-100
+}
+
+.filter_item {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 5px;
+    height: 0;
+    overflow: hidden;
+    transition: all 0.25s linear;
+}
+
+.filter_item.active {
+    height: auto;
+}
+
+.checkbox-round {
+    width: 1em;
+    height: 1em;
+    background-color: #fff;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.checkbox-round:checked {
+    background-color: #e9a246;
+}
+
+.checkbox-round::after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-radius: 100%;
+    background-color: #fff;
+    z-index: 999;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.checkbox-round:checked::after {
+    width: 6px;
+    height: 6px;
+}
+
+// .filter_item {
+//     @apply grid grid-cols-1 gap-1 px-[5%] h-0 overflow-hidden transition ease-in duration-500
+// }
+
+// .filter_item.active {
+//     @apply h-auto p-[5%]
+// }

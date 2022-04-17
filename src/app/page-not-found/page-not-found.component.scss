@@ -1,6 +1,5 @@
 :host {
-  display: block;
-  margin-top: 84px;
+  @apply block mt-[72px] md:mt-[84px]
 }
 /*======================
     404 page

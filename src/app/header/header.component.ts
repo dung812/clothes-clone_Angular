@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit, SimpleChanges } from '@angular/core';
 import { PRODUCT } from './../models/product';
 import { ProductService } from './../product.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, AfterViewInit {
 
   genderList: any = [];
 
@@ -17,6 +16,18 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.genderList = this._productService.getGenderRouting();
+  }
+
+  ngAfterViewInit() {
+    const navItem = document.querySelectorAll(".nav_item a");
+    navItem.forEach(item => item.addEventListener("click", () => {
+      const menu = document.querySelector('#menu');
+      if (menu?.classList.contains("menu-active")) {
+        const menu = document.querySelector('#menu');
+        menu?.classList.add("hidden");
+        menu?.classList.toggle("menu-active");
+      }
+    }));
   }
 
   closeSearchArea() {
@@ -42,5 +53,8 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['product', gender.name]);
     // this.router.navigate(['product',{gender: gender.name}]);
     // this.router.navigate([product.gender], {relativeTo: this.route});
+  }
+  scrollTop() {
+    window.scrollTo(0,0);
   }
 }

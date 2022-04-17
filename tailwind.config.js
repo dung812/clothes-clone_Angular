@@ -19,6 +19,9 @@ module.exports = {
       letterSpacing: {
         bigger: "0.2em",
       },
+      borderRadius: {
+        config: "4px",
+      },
     },
   },
   plugins: [],

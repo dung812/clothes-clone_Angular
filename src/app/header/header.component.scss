@@ -1,5 +1,5 @@
 .nav_item {
-    @apply font-medium sm:px-5 sm:py-4 tracking-widest sm:mx-4 sm:font-semibold uppercase relative 
+    @apply font-medium tracking-widest sm:mx-4 sm:font-semibold uppercase relative 
     sm:after:content-[''] sm:after:w-0 sm:after:h-[3px] sm:after:bg-black sm:after:absolute 
     sm:after:bottom-1 sm:after:right-0 sm:after:left-0 sm:after:ease-in sm:after:duration-300
     sm:hover:after:w-full

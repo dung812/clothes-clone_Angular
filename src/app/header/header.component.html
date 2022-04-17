@@ -1,4 +1,4 @@
-<header class="fixed top-0 left-0 w-full h-14 z-50">
+<header class="fixed top-0 left-0 w-full overflow-hidden z-50 border-b border-gray-300 md:border-0">
     <div class="bg-black mx-auto text-center">
         <p class="text-white font-semibold text-xs sm:text-sm tracking-wider py-1">Freeship nội thành cho đơn từ 300.000 & Freeship toàn quốc cho đơn từ 600.000</p>
     </div>
@@ -12,16 +12,16 @@
                 <img src="../../assets/images/favicon/icon.png" alt="" class="w-7 h-7">
             </a>
         </div>        
-        <div class="hidden sm:block test" id="menu">
+        <div class="hidden sm:block" id="menu">
             <div class="flex justify-between bg-white border border-gray-200 p-5 sm:hidden">
                 <a routerLink="/mainpage" class="text-4xl font-semibold">ssstutter</a>
                 <i (click)="closeMenuMobile()" class="uil uil-times text-4xl cursor-pointer" id="close"></i>
             </div>
             <ul class="nav sm:flex sm:flex-row sm:justify-start sm:items-center">
-                <div *ngFor="let gender of genderList">
-                    <li class="nav_item border border-gray-200 sm:border-0 cursor-pointer" (click)="onSelect(gender)">{{ gender.title }}</li>
-                </div>
-                <li class="nav_item border border-gray-200 sm:border-0"><a class="p-5 block sm:p-0" routerLink="/blog">Blog</a></li>
+                <ng-container *ngFor="let gender of genderList">
+                    <li class="nav_item border border-gray-200 sm:border-0 cursor-pointer"><a class="sm:px-5 sm:py-4 p-5 block sm:p-0" (click)="onSelect(gender); scrollTop()">{{ gender.title }}</a></li>
+                </ng-container>
+                <li class="nav_item border border-gray-200 sm:border-0"><a class="sm:px-5 sm:py-4 p-5 block sm:p-0" routerLink="/blog" (click)="scrollTop()">Blog</a></li>
             </ul>
         </div>
 
@@ -36,8 +36,6 @@
     </div>
 </header>
 
-<router-outlet></router-outlet> 
-
 <div class="hidden fixed z-50 top-20 left-0 right-0 bg-white py-5" id="search-area">
     <div class="flex justify-center items-center flex-col">
         <div class="border-b border-gray-200 block w-full text-center py-5">
@@ -49,3 +47,6 @@
         <i class="uil uil-arrow-left absolute top-7 left-5 sm:left-16 text-4xl cursor-pointer" (click)="closeSearchArea()"></i>
     </div>
 </div>
+
+<router-outlet></router-outlet> 
+

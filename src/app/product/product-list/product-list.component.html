@@ -1,9 +1,52 @@
-<h1>{{ productGender }}</h1>
+<div class="hidden sm:block container mx-auto px-7 pt-3 pb-10">
+    <p class="font-semibold uppercase text-2xl mb-4">{{ genderTitle }}</p>
 
-<ul>
-    <li *ngFor="let product of products">
-        <img [src]="product.image" alt="" width="20%">
-        {{ product.gender }}
-    </li>
-
-</ul>
+    <p class="block w-2/4 text-gray-400 leading-none text-base">Tất cả những sản phẩm Mới nhất nằm trong BST được mở bán Hàng Tuần sẽ được cập nhật liên tục tại đây. Chắc chắn bạn sẽ tìm thấy những sản phẩm Đẹp Nhất - Vừa Vặn Nhất - Phù Hợp nhất với phong cách của mình.
+    </p> 
+</div>
+<div class="category_list container mx-auto px-4 pt-4 sm:px-7 sm:pt-3 sm:pb-10 relative">
+    <div class="flex justify-between sm:hidden">
+        <div class="cursor-pointer" (click)="showCategoryList()">Áo thun <i class="uil uil-angle-down"></i></div>
+        <div class="cursor-pointer" (click)="showFilterList()"><i class="uil uil-plus mr-2"></i>Lọc</div>
+    </div>
+    <div class="category_item hidden sm:block">
+        <ul class="sm:grid sm:grid-cols-5 sm:gap-[10px]">
+            <li class="text-gray-500 hover:text-black text-sm cursor-pointer" *ngFor="let category of categoryList">
+                {{ category | uppercase }}
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-5 sm:gap-7 mb-12">
+    <div class="sm:hidden md:col-span-1 filter_list container mx-auto px-5 sm:mx-0 sm:px-0 bg-white sm:pl-16 relative">
+        <div *ngFor="let filter of filterList">
+            <div (click)="showFilterItem($event)" class="flex justify-between items-center border-b border-gray-300 py-[10px] font-semibold cursor-pointer"> {{ filter.name | titlecase }}<i class="uil uil-angle-right-b text-2xl text-gray-400"></i></div>
+            <div>
+                <ul class="filter_item">
+                    <li *ngFor="let item of filter.items">
+                        <label class="block px-[5px] py-[10px] border-b border-gray-300">
+                            <input type="checkbox" class="checkbox-round"/>
+                            <span class="ml-3 font-semibold">{{ item | titlecase }}</span>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="flex justify-around items-center flex-row mt-5 sm:hidden">
+            <div class="border border-black rounded-config px-[15px] py-[10px] w-[40%] text-center cursor-pointer">Áp dụng</div>
+            <div class="border border-black rounded-config px-[15px] py-[10px] w-[40%] text-center cursor-pointer" (click)="closeFilterList()">Trở lại</div>
+        </div>
+    </div>
+    <div class="sm:col-span-5 md:col-span-4 grid grid-cols-2 sm:grid-cols-3 gap-5 sm:px-10">
+        <div *ngFor="let product of products">
+            <a (click)="routingDetail()" class="block mt-3">
+                <img [src]="product.image" alt="product.alt" class="hover:opacity-80">
+                <div class="pt-3 text-left">
+                    <p class="font-semibold text-base">{{ product.name | titlecase }}</p>
+                    <p class="font-semibold text-lg">{{ product.price | currency:'VND' }}</p>
+                    <p class="text-gray-400 text-xs">+{{ product.color }} màu</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

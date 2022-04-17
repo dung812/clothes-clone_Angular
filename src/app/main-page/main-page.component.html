@@ -1,4 +1,4 @@
-<div class="block mt-[84px]">
+<div class="block mt-[72px] md:mt-[84px]">
     <!--============================== CAROUSEL ==============================-->
     <swiper class="mySwiper"
             [loop]="true"
@@ -57,7 +57,7 @@
     
             <ng-template swiperSlide *ngFor="let product of productForHim">
                 <div>
-                    <a routerLink="/product/product-detail">
+                    <a routerLink="product-detail">
                         <img [src]="product.image" alt="" class="hover:opacity-80">
                     </a>
                     <div class="pt-3 text-left">
@@ -94,7 +94,7 @@
     
                 <ng-template swiperSlide *ngFor="let product of productForHer">
                     <div>
-                        <a routerLink="/product/product-detail">
+                        <a routerLink="product-detail">
                             <img [src]="product.image" alt="">
                         </a>
                         <div class="pt-3 text-left">
@@ -150,7 +150,7 @@
             
             <div data-content="him" class="tabs-content">
                 <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 md:grid-cols-4 md:gap-5">
-                    <a routerLink="/product/product-detail" class="block mt-3" *ngFor="let product of productForHim">
+                    <a routerLink="product-detail" class="block mt-3" *ngFor="let product of productForHim">
                         <img [src]="product.image" alt="product.alt" class="hover:opacity-80">
                         <div class="pt-3 text-left">
                             <p class="font-semibold text-base">{{ product.name | titlecase }}</p>
@@ -163,7 +163,7 @@
 
             <div data-content="her" class="tabs-content hidden">
                 <div  class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 md:grid-cols-4 md:gap-5">
-                    <a routerLink="/product/product-detail" class="block mt-3" *ngFor="let product of productForHer">
+                    <a routerLink="product-detail" class="block mt-3" *ngFor="let product of productForHer">
                         <img [src]="product.image" alt="product.alt" class="hover:opacity-80">
                         <div class="pt-3 text-left">
                             <p class="font-semibold text-base">{{ product.name | titlecase }}</p>
