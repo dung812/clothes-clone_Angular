@@ -73,9 +73,11 @@ export class ProductListComponent implements OnInit, AfterContentChecked {
     filterList?.classList.remove('active');
   }
 
-  routingDetail() {
-    this.router.navigate(['product-detail']);
+  showProductDetail(product: any) {
+    this.router.navigate(['product-detail', product.id]);
   }
 
-
+  scrollTop() {
+    window.scrollTo(0,0);
+  }
 }

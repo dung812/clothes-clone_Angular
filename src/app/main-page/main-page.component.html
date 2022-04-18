@@ -57,7 +57,7 @@
     
             <ng-template swiperSlide *ngFor="let product of productForHim">
                 <div>
-                    <a routerLink="product-detail">
+                    <a (click)="showProductDetail(product); scrollTop()">
                         <img [src]="product.image" alt="" class="hover:opacity-80">
                     </a>
                     <div class="pt-3 text-left">
@@ -94,7 +94,7 @@
     
                 <ng-template swiperSlide *ngFor="let product of productForHer">
                     <div>
-                        <a routerLink="product-detail">
+                        <a (click)="showProductDetail(product); scrollTop()">
                             <img [src]="product.image" alt="">
                         </a>
                         <div class="pt-3 text-left">
@@ -109,7 +109,7 @@
         </div>
     </section>
     
-    <!--=============================== STYLE LIST ===============================-->
+    <!--=============================== STYLE PICK ===============================-->
     <section class="py-14 bg-section" id="style_pick">
         <div class="md:container md:mx-auto md:px-6">
             <p class="text-2xl mb-14 text-white md:text-5xl font-semibold uppercase text-center cursor-pointer">style pick</p>
@@ -129,8 +129,8 @@
             disableOnInteraction: false
             }"
             class="mySwiper">
-            <ng-template swiperSlide class="hover:opacity-80" *ngFor="let product of productSlide">
-                <a routerLink="product/product-detail">
+            <ng-template swiperSlide class="hover:opacity-80" *ngFor="let product of productForHim">
+                <a (click)="showProductDetail(product); scrollTop()">
                     <img [src]="product.image" [alt]="product.alt">
                 </a>
             </ng-template>
@@ -150,7 +150,7 @@
             
             <div data-content="him" class="tabs-content">
                 <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 md:grid-cols-4 md:gap-5">
-                    <a routerLink="product-detail" class="block mt-3" *ngFor="let product of productForHim">
+                    <a (click)="showProductDetail(product); scrollTop()" class="block mt-3" *ngFor="let product of productForHim">
                         <img [src]="product.image" alt="product.alt" class="hover:opacity-80">
                         <div class="pt-3 text-left">
                             <p class="font-semibold text-base">{{ product.name | titlecase }}</p>
@@ -163,7 +163,7 @@
 
             <div data-content="her" class="tabs-content hidden">
                 <div  class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 md:grid-cols-4 md:gap-5">
-                    <a routerLink="product-detail" class="block mt-3" *ngFor="let product of productForHer">
+                    <a (click)="showProductDetail(product); scrollTop()" class="block mt-3" *ngFor="let product of productForHer">
                         <img [src]="product.image" alt="product.alt" class="hover:opacity-80">
                         <div class="pt-3 text-left">
                             <p class="font-semibold text-base">{{ product.name | titlecase }}</p>
@@ -184,7 +184,7 @@
             <p class="text-2xl mb-4 md:text-5xl font-semibold uppercase text-center cursor-pointer">ssstory</p>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <div *ngFor="let blog of blogs"> 
-                    <a routerLink="/blog/blog-detail" class="blog-item mt-5 block hover:text-gray-500">
+                    <a (click)="routingBlogDetail()" class="blog-item mt-5 block hover:text-gray-500">
                         <div class="blog-img_item block w-full pt-[56.25%] bg-center bg-cover bg-no-repeat" [style]="blog.image"></div>
                         <p class="uppercase font-semibold text-xl tracking-widest mt-4">{{ blog.title }}</p>
                     </a>

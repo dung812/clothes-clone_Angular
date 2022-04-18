@@ -23,8 +23,8 @@ export class ProductService {
       { id: 12, name: "Semi-Set Shirt" , image: "../../../assets/images/product/for-her/her-4.jpeg", alt: "clothesforhim", price: 349000, color: 1, gender: "her"},      
       { id: 13, name: "Spaghetti Strap Dress" , image: "../../../assets/images/product/for-her/her-5.jpeg", alt: "clothesforhim", price: 349000, color: 2, gender: "her"},  
       { id: 14, name: "Red Gingham Dress" , image: "../../../assets/images/product/for-her/her-6.jpg", alt: "clothesforhim", price: 549000, color: 2, gender: "her"}, 
-      { id: 13, name: "Pin Shirt" , image: "../../../assets/images/product/for-her/her-7.jpg", alt: "clothesforhim", price: 249000, color: 1, gender: "her"}, 
-      { id: 13, name: "Angie Dress" , image: "../../../assets/images/product/for-her/her-8.png", alt: "clothesforhim", price: 479000, color: 3, gender: "her"},     
+      { id: 15, name: "Pin Shirt" , image: "../../../assets/images/product/for-her/her-7.jpg", alt: "clothesforhim", price: 249000, color: 1, gender: "her"}, 
+      { id: 16, name: "Angie Dress" , image: "../../../assets/images/product/for-her/her-8.png", alt: "clothesforhim", price: 479000, color: 3, gender: "her"},     
     ];
     return products;
   }

@@ -43,14 +43,6 @@ export class MainPageComponent implements OnInit {
     },
   ];
 
-  public productSlide = [
-    { id: "1", name: "compo jeans", image: "../../../assets/images/main-page/style-pick/1.jpeg", alt: "quan nam", price: "299000", color: "2"},
-    { id: "2", name: "cropped pants", image: "../../../assets/images/main-page/style-pick/2.jpeg", alt: "quan nam", price: "239000", color: "3"},
-    { id: "3", name: "compo bodysuit", image: "../../../assets/images/main-page/style-pick/3.jpeg", alt: "bo do nam", price: "999000", color: "2"},
-    { id: "4", name: "prince coat", image: "../../../assets/images/main-page/style-pick/4.jpeg", alt: "ao nam", price: "199000", color: "2"},
-    { id: "5", name: "sss. sweatset", image: "../../../assets/images/main-page/style-pick/5.jpeg", alt: "quan nam", price: "299000", color: "2"},
-    { id: "6", name: "prince flannel shirt", image: "../../../assets/images/main-page/style-pick/6.jpeg", alt: "ao nam", price: "329000", color: "3"},
-  ];
   public blogs = [
     { id: "1", title: "6 BÍ QUYẾT PHỐI MÀU GIÚP OUTFIT CỦA BẠN TRỞ NÊN NỔI BẬT HƠN", image: "background-image:url(../../assets/images/main-page/ssstory/1644568834577.jpeg)" },
     { id: "2", title: "6 mẹo giúp tăng tuổi thọ của quần áo hơn 3 năm", image: "background-image:url(../../assets/images/main-page/ssstory/1636339479194.jpeg)" },
@@ -99,7 +91,16 @@ export class MainPageComponent implements OnInit {
 
   onSelect(gender: any) {
     this.router.navigate(['product', gender.name]);
-    // this.router.navigate(['product',{gender: gender.name}]);
-    // this.router.navigate([product.gender], {relativeTo: this.route});
+  }
+
+  showProductDetail(product: any) {
+    this.router.navigate(['product-detail', product.id]);
+  }
+  scrollTop() {
+    window.scrollTo(0,0);
+  }
+
+  routingBlogDetail() {
+    this.router.navigate(['blog-detail']);
   }
 }

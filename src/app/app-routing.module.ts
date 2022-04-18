@@ -16,7 +16,7 @@ const routes: Routes = [
     { path: 'cart', component: CartComponent },
     { path: 'checkout', component: CheckoutComponent },
     { path: 'product/:gender', component: ProductListComponent },
-    { path: 'product-detail', component: ProductDetailComponent, },
+    { path: 'product-detail/:id', component: ProductDetailComponent, },
     { path: 'blog', component: BlogListComponent },
     { path: 'blog-detail', component: BlogDetailComponent },
     { path: "pagenotfound", component: PageNotFoundComponent },

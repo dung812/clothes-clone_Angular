@@ -7,7 +7,7 @@
 }
 
 .filter_list {
-    @apply fixed overflow-x-auto pt-6 sm:pt-0 w-full h-full top-0 mt-[72px] sm:mt-0 translate-x-[-100%] opacity-0 sm:opacity-100 sm:translate-x-0 md:block sm:h-auto sm:w-auto sm:relative ease-in duration-300 text-sm
+    @apply fixed overflow-x-auto pt-6 sm:pt-0 w-full h-full top-0 mt-[48px] sm:mt-0 translate-x-[-100%] opacity-0 sm:opacity-100 sm:translate-x-0 md:block sm:h-auto sm:w-auto sm:relative ease-in duration-300 text-sm
 }
 .filter_list.active {
     @apply translate-x-0 opacity-100
