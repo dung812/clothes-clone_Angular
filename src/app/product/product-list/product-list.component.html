@@ -24,7 +24,7 @@
             <div>
                 <ul class="filter_item">
                     <li *ngFor="let item of filter.items">
-                        <label class="block px-[5px] py-[10px] border-b border-gray-300">
+                        <label class="block px-[5px] py-[10px] border-b border-gray-300 cursor-pointer">
                             <input type="checkbox" class="checkbox-round"/>
                             <span class="ml-3 font-semibold">{{ item | titlecase }}</span>
                         </label>
@@ -40,7 +40,7 @@
     <div class="sm:col-span-5 md:col-span-4 grid grid-cols-2 sm:grid-cols-3 gap-5 sm:px-10">
         <div *ngFor="let product of products">
             <a (click)="showProductDetail(product); scrollTop()" class="block mt-3">
-                <img [src]="product.image" alt="product.alt" class="hover:opacity-80">
+                <img [src]="product.image[1]" alt="product.alt" class="hover:opacity-80">
                 <div class="pt-3 text-left">
                     <p class="font-semibold text-base">{{ product.name | titlecase }}</p>
                     <p class="font-semibold text-lg">{{ product.price | currency:'VND' }}</p>

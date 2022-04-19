@@ -58,7 +58,7 @@
             <ng-template swiperSlide *ngFor="let product of productForHim">
                 <div>
                     <a (click)="showProductDetail(product); scrollTop()">
-                        <img [src]="product.image" alt="" class="hover:opacity-80">
+                        <img [src]="product.image[1]" alt="" class="hover:opacity-80">
                     </a>
                     <div class="pt-3 text-left">
                         <p class="font-semibold text-base">{{ product.name | titlecase }}</p>
@@ -95,7 +95,7 @@
                 <ng-template swiperSlide *ngFor="let product of productForHer">
                     <div>
                         <a (click)="showProductDetail(product); scrollTop()">
-                            <img [src]="product.image" alt="">
+                            <img [src]="product.image[1]" alt="">
                         </a>
                         <div class="pt-3 text-left">
                             <p class="font-semibold text-base">{{ product.name | titlecase }}</p>
@@ -131,7 +131,7 @@
             class="mySwiper">
             <ng-template swiperSlide class="hover:opacity-80" *ngFor="let product of productForHim">
                 <a (click)="showProductDetail(product); scrollTop()">
-                    <img [src]="product.image" [alt]="product.alt">
+                    <img [src]="product.image[1]" [alt]="product.alt">
                 </a>
             </ng-template>
           </swiper>
@@ -151,7 +151,7 @@
             <div data-content="him" class="tabs-content">
                 <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 md:grid-cols-4 md:gap-5">
                     <a (click)="showProductDetail(product); scrollTop()" class="block mt-3" *ngFor="let product of productForHim">
-                        <img [src]="product.image" alt="product.alt" class="hover:opacity-80">
+                        <img [src]="product.image[1]" alt="product.alt" class="hover:opacity-80">
                         <div class="pt-3 text-left">
                             <p class="font-semibold text-base">{{ product.name | titlecase }}</p>
                             <p class="font-semibold text-lg">{{ product.price | currency:'VND' }}</p>
@@ -164,7 +164,7 @@
             <div data-content="her" class="tabs-content hidden">
                 <div  class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 md:grid-cols-4 md:gap-5">
                     <a (click)="showProductDetail(product); scrollTop()" class="block mt-3" *ngFor="let product of productForHer">
-                        <img [src]="product.image" alt="product.alt" class="hover:opacity-80">
+                        <img [src]="product.image[1]" alt="product.alt" class="hover:opacity-80">
                         <div class="pt-3 text-left">
                             <p class="font-semibold text-base">{{ product.name | titlecase }}</p>
                             <p class="font-semibold text-lg">{{ product.price | currency:'VND' }}</p>
