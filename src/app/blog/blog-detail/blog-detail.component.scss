@@ -1,3 +1,54 @@
 :host {
   @apply block pt-[48px] sm:pt-[56px]
 }
+.slide-top1{
+  background-image:url(../../../assets/images/main-page/ssstory/1644568834577.jpeg)
+}
+.slide-top2{
+  background-image:url(../../../assets/images/main-page/ssstory/1636339479194.jpeg)
+}
+.slide-top3{
+  background-image:url(../../../assets/images/main-page/ssstory/1636339044098.jpeg)
+}
+.slide-top{
+  display: block;
+  width: 60%;
+  padding-top: 50%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.border-top{
+  border-bottom: thin solid #f1f1f1;
+}
+.author_avt{
+  background-image: url(../../../assets/images/blog/author_i4.png);
+}
+.author-i4{
+    display: block;
+    width: 52px;
+    height: 52px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: thin solid #f1f1f1;
+    border-radius: 50px;
+    border-collapse: collapse;
+}
+.banner-aricle{
+  display: block;
+  width: 100%;
+  padding-top: 56.25%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.bg-blog-content{
+  background: #eff2f5;
+  padding: 10px;
+}
+.blog-content{
+  display: block;
+  max-width: 60%;
+  margin: 0 auto;
+}
