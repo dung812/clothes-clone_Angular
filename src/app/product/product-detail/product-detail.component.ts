@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { ProductService } from './../../product.service';
 
@@ -7,7 +7,7 @@ import { ProductService } from './../../product.service';
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.scss']
 })
-export class ProductDetailComponent implements OnInit {
+export class ProductDetailComponent implements OnInit, AfterViewInit {
 
   public idProduct: number = 0;
   public productDetail : any;
@@ -22,4 +22,44 @@ export class ProductDetailComponent implements OnInit {
     this.productDetail = this._productService.getProducts().find(p => p.id === this.idProduct);
   }
 
+  ngAfterViewInit() {
+
+  }
+  
+
+  activeSizeItem(event: any) {
+    const sizeItem = document.querySelectorAll('.size_item');
+    sizeItem.forEach(item => item.classList.remove('active'));
+    event.target.classList.add('active');
+  }
+
+  openModalTurorial(event: any) {
+    const tutorialDataset = event.currentTarget.dataset.tutorial;
+    const modal = document.querySelector('.modal');
+    modal?.classList.add('active');
+
+    const tutorialContent = modal?.querySelectorAll(".tutorial_content"); 
+    tutorialContent?.forEach((item: any) => { // loop all content tutorial in modal
+      if (item.dataset.content === tutorialDataset) {
+        item.classList.remove('hidden');
+      } 
+    })
+  }
+
+  closeModal() {
+    const modal = document.querySelector('.modal');
+    modal?.classList.remove('active');
+    const tutorialContent = modal?.querySelectorAll(".tutorial_content"); 
+    tutorialContent?.forEach((item: any) => item.classList.add('hidden'));
+  }
+
+  closeModalOutside(event: any) {
+    if (event.target.matches(".modal")) {
+      const modal = document.querySelector('.modal');
+      modal?.classList.remove('active');
+      const tutorialContent = modal?.querySelectorAll(".tutorial_content"); 
+      tutorialContent?.forEach((item: any) => item.classList.add('hidden'));
+    }
+  }
+  
 }
