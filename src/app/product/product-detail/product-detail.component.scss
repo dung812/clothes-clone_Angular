@@ -1,3 +1,68 @@
 :host {
-    @apply block pt-[48px] sm:pt-[56px]
+  @apply block pt-[48px] sm:pt-[56px]
+}
+
+.modal-content{
+  overflow-y: scroll;
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+}
+
+.modal-content::-webkit-scrollbar {
+    display: none;
+}
+
+
+.image-detail-s ul {
+  // width: 100vw;
+  display: block;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  scroll-snap-type: x mandatory;
+  scroll-snap-stop: always;
+  overscroll-behavior: none;
+  position: relative;
+}
+
+.image-detail-s ul li {
+  scroll-snap-align: start;
+  display: inline-block;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.size_item.active {
+  @apply outline outline-1 outline-black;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999999;
+  background-color: rgba(0, 0, 0, 0.25);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+  opacity: 0;
+}
+.modal-content {
+  height: auto;
+  max-height: 500px;
+  width: 100%;
+  max-width: 800px;
+  border-radius: 10px;
+  position: relative;
+  background-color: #fff;
+}
+
+.modal.active {
+    display: flex;
+    opacity: 1;
 }

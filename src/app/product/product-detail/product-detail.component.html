@@ -1,3 +1,83 @@
-<!-- <p>{{ productDetail.id }}</p>
-<p>{{ productDetail.name }}</p>
-<img [src]="productDetail.image[1]" alt="" width="30%"/> -->
+<div class="grid grid-cols-1 gap-3 md:gap-0 md:grid-cols-6">
+    <div class="image-detail-s md:hidden">
+        <ul>
+            <li *ngFor="let image of productDetail.image">
+                <img [src]="image" alt="productDetail.alt">
+            </li>
+        </ul>
+    </div>
+
+    <div class="image-detail-l hidden md:block md:col-span-4">
+        <div class="grid grid-cols-2">
+            <div *ngFor="let image of productDetail.image">
+                <img [src]="image" alt="productDetail.alt">
+            </div>
+        </div>
+    </div>
+    
+    <div class="detail-product md:col-span-2 container mx-auto px-5 md:px-5">
+        <div class="pt-4">
+            <div class="mb-[24px] flex justify-between md:block">
+                <p class="text-xl font-semibold">{{ productDetail.name }}</p>
+                <p class="text-2xl font-bold">{{ productDetail.price | currency:'VND' }}</p>
+            </div>
+
+            <div class="mb-[24px]">
+                <p class="text-base font-semibold mb-[10px]">Chọn Màu:</p>
+                <div class="grid grid-cols-4 gap-[16px] overflow-hidden">
+                    <img [src]="productDetail.image[0]" alt="" class="w-[80px] h-auto border border-black cursor-pointer">
+                </div>
+            </div>
+            
+            <div class="mb-[24px]">
+                <p class="text-base font-semibold mb-[10px]">Chọn Size:</p>
+                <div class="grid grid-cols-3 gap-5 md:grid-cols-7 md:gap-5">
+                    <div class="size_item active px-10 md:px-[1.45rem] py-3 flex justify-center items-center outline outline-1 outline-gray-200 hover:outline-black cursor-pointer" (click)="activeSizeItem($event)">1</div>
+                    <div class="size_item px-10 md:px-[1.45rem] py-3 flex justify-center items-center outline outline-1 outline-gray-200 hover:outline-black cursor-pointer" (click)="activeSizeItem($event)">2</div>
+                    <div class="size_item px-10 md:px-[1.45rem] py-3 flex justify-center items-center outline outline-1 outline-gray-200 hover:outline-black cursor-pointer" (click)="activeSizeItem($event)">3</div>
+                </div>
+            </div>
+
+            <div class="mb-[24px]">
+                <div class="text-center uppercase py-3 bg-gray-400 text-white font-semibold text-2xl rounded-md transition ease-linear duration-150 delay-75 hover:bg-black hover:text-white cursor-pointer">thêm vào giỏ hàng</div>
+            </div>
+
+            <div class="mb-[24px]">
+                <div class="flex justify-between my-5 py-1 transition ease-in-out duration-300 border-b border-gray-300 hover:border-black cursor-pointer" data-tutorial="size" (click)="openModalTurorial($event)">
+                    <p class="font-semibold">Hướng dẫn chọn size</p>
+                    <i class="uil uil-angle-right-b text-2xl text-bold text-gray-300"></i>
+                </div>
+                <div class="flex justify-between my-5 py-1 transition ease-in-out duration-300 border-b border-gray-300 hover:border-black cursor-pointer" data-tutorial="refund" (click)="openModalTurorial($event)">
+                    <p class="font-semibold">Hướng dẫn đổi trả</p>
+                    <i class="uil uil-angle-right-b text-2xl text-bold text-gray-300"></i>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<div class="modal transition duration-300 ease-in-out" (click)="closeModalOutside($event)">
+    <div class="modal-content relative p-9 overflow-y-auto">
+        <i class="uil uil-times absolute top-2 right-5 text-3xl cursor-pointer" (click)="closeModal()"></i>
+        <div class="hidden tutorial_content" data-content="size">
+            <p class="text-center uppercase text-xl font-semibold mb-4">my fit size</p>
+            <div class="">
+                <img src="../../../assets/images/size.jpg" alt="size-image" class="mx-auto">
+            </div>
+        </div>
+        <div class="hidden tutorial_content" data-content="refund">
+            <p class="text-center uppercase text-xl font-semibold mb-4">QUY ĐỊNH ĐỔI HÀNG <br/> BẠN VUI LÒNG KIỂM TRA HOÁ ĐƠN VÀ TƯ TRANG TRƯỚC KHI RỜI QUẦY NHÉ !</p>
+            <div class="">
+                <p>– Bạn có thể đổi hàng trong 14 ngày kể từ ngày mua hàng.</p>
+                <p>– Mặt hàng phải ở trong tình trạng ban đầu, còn nguyên tem mác, chưa qua sử dụng, chưa giặt giũ và có hoá đơn tương ứng.</p>
+                <p>– Bạn vui lòng giữ lại hoá đơn để được đổi hàng. Bạn có thể xuất trình hóa đơn mua hàng dưới dạng giấy in hoặc định dạng điện tử trên điện thoại di động của bạn.</p>
+                <p>– Mỗi hoá đơn chỉ được đổi một lần.</p>
+                <p>– Không áp dụng đổi hàng với hoá đơn khuyến mãi, giảm giá trên 30%.</p>
+                <p>– Không có chính sách trả hàng với bất kì sản phẩm nào của Clothes World.</p>
+                <p>– Bạn có thể đổi hàng tại tất cả các chi nhánh của Clothes World.</p>
+                <p>Mọi thắc mắc khác bạn vui lòng gọi số  <strong>086.993.6266</strong> hoặc liên hệ fanpage Clothes World để được hỗ trợ ngay nhé.</p>
+            </div>
+        </div>
+    </div>
+</div>
