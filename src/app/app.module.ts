@@ -11,7 +11,6 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { ProductListComponent } from './product/product-list/product-list.component';
 import { ProductDetailComponent } from './product/product-detail/product-detail.component';
 import { CartComponent } from './cart/cart.component';
-import { CheckoutComponent } from './checkout/checkout.component';
 import { BlogListComponent } from './blog/blog-list/blog-list.component';
 import { BlogDetailComponent } from './blog/blog-detail/blog-detail.component';
 import { SwiperModule } from 'swiper/angular';
@@ -26,7 +25,6 @@ import { SwiperModule } from 'swiper/angular';
     ProductListComponent,
     ProductDetailComponent,
     CartComponent,
-    CheckoutComponent,
     BlogListComponent,
     BlogDetailComponent,
   ],

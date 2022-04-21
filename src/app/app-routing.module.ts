@@ -1,4 +1,3 @@
-import { CheckoutComponent } from './checkout/checkout.component';
 import { CartComponent } from './cart/cart.component';
 import { BlogDetailComponent } from './blog/blog-detail/blog-detail.component';
 import { BlogListComponent } from './blog/blog-list/blog-list.component';
@@ -14,7 +13,6 @@ const routes: Routes = [
     { path: '', component: MainPageComponent }, // Mặc định sẽ route vào trang chủ
     { path: 'mainpage', component: MainPageComponent },
     { path: 'cart', component: CartComponent },
-    { path: 'checkout', component: CheckoutComponent },
     { path: 'product/:gender', component: ProductListComponent },
     { path: 'product-detail/:id', component: ProductDetailComponent, },
     { path: 'blog', component: BlogListComponent },

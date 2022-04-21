@@ -1,3 +1,156 @@
-<p>cart works!</p>
-<a routerLink="/checkout" class="p-4 bg-blue-500 text-white inline-block">Check-out</a>
-<router-outlet></router-outlet>
+<div class="grid grid-cols-1 gap-5 md:grid-cols-2 container mx-auto px-4 py-10 bg-gray-200">
+    <div>
+        <div class="border border-gray-400 rounded p-5 bg-white mb-4">
+            <p class="uppercase text-xl font-semibold mb-2">thông tin giao hàng</p>
+            <form action="">
+                <div class="form-group mb-5">
+                    <input type="text" name="name" class="w-full border border-gray-400 rounded px-[15px] py-[10px] text-sm" placeholder="* Họ & tên" />
+                </div>
+
+                <div class="form-group mb-5">
+                    <input type="text" name="name" class="w-full border border-gray-400 rounded px-[15px] py-[10px] text-sm" placeholder="Email" />
+                </div>
+
+                <div class="form-group mb-5">
+                    <input type="text" name="name" class="w-full border border-gray-400 rounded  px-[15px] py-[10px] text-sm" placeholder="* Số điện thoại" />
+                </div>
+
+                <div class="mb-5 md:flex justify-between">
+                    <select class="block w-full md:w-auto mb-5 md:mb-0 md:inline-block text-gray-400 border border-gray-400 rounded px-[15px] py-[10px] text-sm" name="ls_province"></select>
+                    <select class="block w-full md:w-auto mb-5 md:mb-0 md:inline-block text-gray-400 border border-gray-400 rounded px-[15px] py-[10px] text-sm" name="ls_district"></select>
+                    <select class="block w-full md:w-auto md:inline-block text-gray-400 border border-gray-400 rounded px-[15px] py-[10px] text-sm" name="ls_ward"></select>
+                </div>
+
+                <div class="form-group mb-5">
+                    <input type="text" name="name" class="w-full border border-gray-400 rounded px-[15px] py-[10px] text-sm" placeholder="* Số nhà tên đường..." />
+                </div>
+
+                <p class="text-gray-500 text-sm">(*) là trường không được để trống</p>
+            </form>
+        </div>
+        <div class="border border-gray-400 rounded p-5 bg-white">
+            <p class="uppercase text-xl font-semibold mb-2">phương thức thanh toán</p>
+            <label (click)="activePayment($event)" class="payment_item active flex items-center px-[15px] py-[10px] border border-gray-300 rounded mb-5 min-h-[54px]">
+                <input type="checkbox" class="checkbox-round" checked>
+                <img src="../../assets/images/visa.jpg" alt="" class="w-[15%] md:w-[8%]">
+                <p class="text-sm font-semibold">Thanh toán thẻ (ATM, Visa , MasterCard)</p>
+            </label>
+
+            <label (click)="activePayment($event)" class="payment_item flex items-center px-[15px] py-[10px] border border-gray-300 rounded mb-5 min-h-[54px]">
+                <input type="checkbox" class="checkbox-round">
+                <i class="uil uil-truck text-2xl px-2"></i>
+                <p class="text-sm font-semibold">Thanh toán khi giao hàng (COD)</p>
+            </label>
+        </div>
+    </div>
+
+    <div class="border border-gray-400 rounded p-5 bg-white">
+        <div class="list_cart overflow-y-auto overflow-x-hidden h-[50vh]">
+            
+            <div class="item_cart grid grid-cols-8 gap-4 mb-[14px]">
+                <div class="col-span-2">
+                    <img src="../../assets/images/product/for-him/2b.jpeg" alt="" class="w-full md:w-[70%]">
+                </div>
+        
+                <div class="col-span-5">
+                    <p class="uppercase font-bold text-base">CROPPED DENIM PANTS</p>
+                    <p class="text-base">419.000 ₫</p>
+                    <div class="flex relative mt-2">
+                        <button class="py-1 px-3 text-xl cursor-pointer" data-quanlity="descrease" (click)="changeQuanlity($event)">-</button>
+                        <input type="number" value="1" class="w-16 text-sm border border-gray-400 rounded-md text-center" id="quanlity_product">
+                        <button class="py-1 px-3 text-xl cursor-pointer" data-quanlity="inscreate" (click)="changeQuanlity($event)">+</button>
+                    </div>
+                </div>
+        
+                <div class="col-span-1 flex justify-center items-start cursor-pointer" (click)="deteleProductInCart($event)">
+                    <i class="uil uil-times text-3xl text-gray-400"></i>
+                </div>
+            </div>
+            <div class="item_cart grid grid-cols-8 gap-4 mb-[14px]">
+                <div class="col-span-2">
+                    <img src="../../assets/images/product/for-him/1a.jpeg" alt="" class="w-full md:w-[70%]">
+                </div>
+        
+                <div class="col-span-5">
+                    <p class="uppercase font-bold text-base">CROPPED DENIM PANTS</p>
+                    <p class="text-base">419.000 ₫</p>
+                    <div class="flex relative mt-2">
+                        <button class="py-1 px-3 text-xl cursor-pointer" data-quanlity="descrease" (click)="changeQuanlity($event)">-</button>
+                        <input type="number" value="1" class="w-16 text-sm border border-gray-400 rounded-md text-center" id="quanlity_product">
+                        <button class="py-1 px-3 text-xl cursor-pointer" data-quanlity="inscreate" (click)="changeQuanlity($event)">+</button>
+                    </div>
+                </div>
+        
+                <div class="col-span-1 flex justify-center items-start cursor-pointer" (click)="deteleProductInCart($event)">
+                    <i class="uil uil-times text-3xl text-gray-400"></i>
+                </div>
+            </div>
+            <div class="item_cart grid grid-cols-8 gap-4 mb-[14px]">
+                <div class="col-span-2">
+                    <img src="../../assets/images/product/for-him/3c.jpeg" alt="" class="w-full md:w-[70%]">
+                </div>
+        
+                <div class="col-span-5">
+                    <p class="uppercase font-bold text-base">CROPPED DENIM PANTS</p>
+                    <p class="text-base">419.000 ₫</p>
+                    <div class="flex relative mt-2">
+                        <button class="py-1 px-3 text-xl cursor-pointer" data-quanlity="descrease" (click)="changeQuanlity($event)">-</button>
+                        <input type="number" value="1" class="w-16 text-sm border border-gray-400 rounded-md text-center" id="quanlity_product">
+                        <button class="py-1 px-3 text-xl cursor-pointer" data-quanlity="inscreate" (click)="changeQuanlity($event)">+</button>
+                    </div>
+                </div>
+        
+                <div class="col-span-1 flex justify-center items-start cursor-pointer" (click)="deteleProductInCart($event)">
+                    <i class="uil uil-times text-3xl text-gray-400"></i>
+                </div>
+            </div>
+            <div class="item_cart grid grid-cols-8 gap-4 mb-[14px]">
+                <div class="col-span-2">
+                    <img src="../../assets/images/product/for-him/4d.jpeg" alt="" class="w-full md:w-[70%]">
+                </div>
+        
+                <div class="col-span-5">
+                    <p class="uppercase font-bold text-base">CROPPED DENIM PANTS</p>
+                    <p class="text-base">419.000 ₫</p>
+                    <div class="flex relative mt-2">
+                        <button class="py-1 px-3 text-xl cursor-pointer" data-quanlity="descrease" (click)="changeQuanlity($event)">-</button>
+                        <input type="number" value="1" class="w-16 text-sm border border-gray-400 rounded-md text-center" id="quanlity_product">
+                        <button class="py-1 px-3 text-xl cursor-pointer" data-quanlity="inscreate" (click)="changeQuanlity($event)">+</button>
+                    </div>
+                </div>
+        
+                <div class="col-span-1 flex justify-center items-start cursor-pointer" (click)="deteleProductInCart($event)">
+                    <i class="uil uil-times text-3xl text-gray-400"></i>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="my-5">
+            <div class="flex my-3">
+                <input class="grow p-2 border border-gray-500 text-sm" type="text" placeholder="Mã giảm giá..." />
+                <div class="p-2 bg-gray-300 text-gray-700 font-semibold text-base cursor-pointer">Áp dụng</div>
+            </div>
+            <div class="flex justify-between font-semibold my-2 text-lg">
+                <p>Tổng:</p>
+                <p class="text-left">1.123123 đ</p>
+            </div>
+            <div class="flex justify-between my-2 text-gray-400 font-semibold">
+                <p>Ưu đãi:</p>
+                <p class="text-left">-0 đ</p>
+            </div>
+            <div class="flex justify-between my-2 text-gray-400 font-semibold">
+                <p>Phí ship:</p>
+                <p class="text-left">0 đ</p>
+            </div>
+            <div class="flex justify-between font-semibold my-2 text-lg">
+                <p>Thành tiền:</p>
+                <p class="text-left">1.123123 đ</p>
+            </div>
+    
+            <div class="p-[15px] text-center bg-black text-white text-sm rounded cursor-pointer hover:opacity-60">Hoàn tất đơn hàng</div>
+        </div>
+    </div>
+
+</div>
+
