@@ -14,6 +14,7 @@ import { CartComponent } from './cart/cart.component';
 import { BlogListComponent } from './blog/blog-list/blog-list.component';
 import { BlogDetailComponent } from './blog/blog-detail/blog-detail.component';
 import { SwiperModule } from 'swiper/angular';
+import { SuccessOrderComponent } from './success-order/success-order.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { SwiperModule } from 'swiper/angular';
     CartComponent,
     BlogListComponent,
     BlogDetailComponent,
+    SuccessOrderComponent,
   ],
   imports: [
     BrowserModule,

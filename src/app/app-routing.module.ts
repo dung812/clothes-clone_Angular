@@ -1,3 +1,4 @@
+import { SuccessOrderComponent } from './success-order/success-order.component';
 import { CartComponent } from './cart/cart.component';
 import { BlogDetailComponent } from './blog/blog-detail/blog-detail.component';
 import { BlogListComponent } from './blog/blog-list/blog-list.component';
@@ -17,6 +18,7 @@ const routes: Routes = [
     { path: 'product-detail/:id', component: ProductDetailComponent, },
     { path: 'blog', component: BlogListComponent },
     { path: 'blog-detail', component: BlogDetailComponent },
+    { path: "success-order", component: SuccessOrderComponent },
     { path: "pagenotfound", component: PageNotFoundComponent },
     { path: "**", component: PageNotFoundComponent },
 ];
