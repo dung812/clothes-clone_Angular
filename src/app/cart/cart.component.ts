@@ -96,9 +96,6 @@ export class CartComponent implements OnInit, AfterContentChecked {
 
   }
 
-  routingSuccessOrder() {
-    // this.router.navigate(['success-order']);
-  }
 
   submitForm() {
     const fullName = document.querySelector('input[name="name"]') as HTMLInputElement;

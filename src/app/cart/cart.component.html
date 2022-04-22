@@ -82,7 +82,7 @@
             
             <div class="item_cart grid grid-cols-8 gap-4 mb-[14px]" *ngFor="let item of cartList" [attr.data-id]="item.id">
                 <div class="col-span-2">
-                    <img [src]="item.image" alt="san-pham-trong-gio-hang" class="w-full md:w-[70%]">
+                    <img [src]="'../../../assets/images/product/' + item.image" alt="san-pham-trong-gio-hang" class="w-full md:w-[70%]">
                 </div>
         
                 <div class="col-span-5">

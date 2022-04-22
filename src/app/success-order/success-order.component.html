@@ -9,17 +9,17 @@
             <p class="mb-3 text-blue-600 text-base md:text-lg">Tóm tắt thanh toán</p>
             <div class="border-t border-gray-400 border-dashed py-3">
                 <div class="cart_item flex justify-between mb-2 text-base" *ngFor="let item of cartList">
-                    <p>{{ item.name }}(Qty: {{ item.quanlity }})</p>
+                    <p class="w-[60%]">{{ item.name | titlecase }} (Qty: {{ item.quanlity }})</p>
                     <p class="text-left">{{ item.price | currency:'VND' }}</p>
                 </div>
 
                 <div class="mt-5">     
                     <div class="flex justify-between">
-                        <p>Shipping</p>
+                        <p>Phí vận chuyển</p>
                         <p class="text-left">₫0</p>
                     </div>
                     <div class="flex justify-between font-bold text-lg">
-                        <p>Total</p>
+                        <p>Tổng tiền</p>
                         <p class="text-left">{{ totalPrice | currency:'VND' }}</p>
                     </div>
                 </div>

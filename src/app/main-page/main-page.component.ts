@@ -24,7 +24,8 @@ export class MainPageComponent implements OnInit {
 
   public productForHim: PRODUCT[] = [];
   public productForHer: PRODUCT[] = [];
-
+  public productForHimWeekly: PRODUCT[] = [];
+  public productForHerWeekly: PRODUCT[] = [];
 
   slides = [
     {
@@ -56,6 +57,12 @@ export class MainPageComponent implements OnInit {
     this.genderList = this._productService.getGenderRouting();
     this.productForHim = this._productService.getProducts().filter(e => e.gender === "him");
     this.productForHer = this._productService.getProducts().filter(e => e.gender === "her");
+
+    for (let i = 0; i < 8; i++) {
+      this.productForHimWeekly.push(this.productForHim[i]);
+      this.productForHerWeekly.push(this.productForHer[i]);
+    }
+
   };
 
   activeCategory(event:any):void {

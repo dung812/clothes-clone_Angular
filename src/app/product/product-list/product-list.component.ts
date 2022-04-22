@@ -38,11 +38,13 @@ export class ProductListComponent implements OnInit, AfterContentChecked {
   ngAfterContentChecked() {
     if (this.productGender === "for-him") {
       this.products = this._productService.getProducts().filter(e => e.gender === "him");
-      this.genderTitle = "for him";
+      // this.genderTitle = "for him";
+      this.genderTitle = "Quần áo nam";
     }
     else if (this.productGender === "for-her") {
       this.products = this._productService.getProducts().filter(e => e.gender === "her");
-      this.genderTitle = "for her";
+      // this.genderTitle = "for her";
+      this.genderTitle = "Quần áo nữ";
     }
     else {
       this.router.navigate(['pagenotfound']);
