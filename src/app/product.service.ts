@@ -1,12 +1,40 @@
 import { Injectable } from '@angular/core';
 import { PRODUCT } from './models/product';
+import { BehaviorSubject } from 'rxjs';
+import { ICartItem } from './models/cartItem';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
+  public cartList: ICartItem[] = localStorage.length > 0 ? JSON.parse(localStorage.getItem("cartItem") || '[]') : [];
+  public quanlityCartItem = this.cartList.reduce(function(previousValue, currentValue) {
+        return previousValue += currentValue.quanlity
+      }, 0);  
+  public totalQuanlityCart = this.quanlityCartItem;
+  public totalQuanlityCart$ = new BehaviorSubject<number>(this.quanlityCartItem);
   constructor() {}
 
+  public increamentItemCart() {
+    this.totalQuanlityCart++;
+    this.totalQuanlityCart$.next(this.totalQuanlityCart);
+  }
+
+  public descreamentItemCart() {
+    this.totalQuanlityCart--;
+    this.totalQuanlityCart$.next(this.totalQuanlityCart);
+  }
+
+  public deleteItemCart(num: number) {
+    this.totalQuanlityCart = this.totalQuanlityCart - num;
+    this.totalQuanlityCart$.next(this.totalQuanlityCart);
+  }
+
+  public resetItemCart() {
+    this.totalQuanlityCart = 0;
+    this.totalQuanlityCart$.next(0);
+  }
+  
   getProducts() {
     const products: PRODUCT[]  = [
       { id: 1, name: "side pants II", image: ["../../../assets/images/product/for-him/1a.jpeg", "../../../assets/images/product/for-him/1b.jpeg", "../../../assets/images/product/for-him/1c.jpeg", "../../../assets/images/product/for-him/1d.jpeg"], alt: "clothesforhim", price: 449000, color: 2, gender: "him"},
@@ -34,4 +62,6 @@ export class ProductService {
       {id: 2, title: "Nữ", name: "for-her", image: "../../../assets/images/main-page/for-her.jpeg", alt: "image-banner-her"},
     ];
   }
+
+
 }

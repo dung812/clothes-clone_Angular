@@ -88,5 +88,6 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
     }
     localStorage.setItem("cartItem", JSON.stringify(cartList));
     alert(`Thêm thành công sản phẩm "${productDetail.name}" vào giỏ hàng`);
+    this._productService.increamentItemCart();
   }
 }

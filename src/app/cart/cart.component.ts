@@ -1,6 +1,8 @@
 import { Component, OnInit, AfterContentChecked } from '@angular/core';
 import { ICartItem } from '../models/cartItem';
 import { Router } from '@angular/router';
+import { ProductService } from '../product.service';
+declare const LocalPicker: any;
 
 @Component({
   selector: 'app-cart',
@@ -12,7 +14,7 @@ export class CartComponent implements OnInit, AfterContentChecked {
 
   public totalPrice: number = 0;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private _productService: ProductService) {}
 
   ngOnInit(): void {
     this.totalPrice = this.cartList.reduce(function(previousValue, currentValue) {
@@ -24,6 +26,7 @@ export class CartComponent implements OnInit, AfterContentChecked {
     this.totalPrice = this.cartList.reduce(function(previousValue, currentValue) {
       return previousValue += currentValue.price * currentValue.quanlity
     }, 0);   
+
   }
 
   changeQuanlity(event: any) {
@@ -45,6 +48,7 @@ export class CartComponent implements OnInit, AfterContentChecked {
         
         // Update localStorage items
         this.cartList[itemIndex].quanlity = quanlityOfProduct - 1;
+        this._productService.descreamentItemCart();
       }
     } else if (event.target.dataset.quanlity === 'increase') {
       // Update DOM
@@ -53,6 +57,7 @@ export class CartComponent implements OnInit, AfterContentChecked {
 
       // Update localStorage items
       this.cartList[itemIndex].quanlity = quanlityOfProduct + 1;
+      this._productService.increamentItemCart();
     }
     localStorage.setItem("cartItem", JSON.stringify(this.cartList)); // Update array localStorage
   }
@@ -76,16 +81,19 @@ export class CartComponent implements OnInit, AfterContentChecked {
     const listItemCart = document.querySelector(".list_cart");
     listItemCart?.removeChild(currentProduct);
 
-    // Detele product item on localStorage
-    // const product = [...this.cartList].find(item => item.id === parseInt(currentProduct.dataset.id)); // Get product item on localStorage
-    // const quanlityOfProduct = product?.quanlity ?? 1; // Get product item quanlity
 
-    // const itemIndex = [...this.cartList].findIndex(item => item.id === parseInt(currentProduct.dataset.id)); // Get product item on localStorage
-    // this.cartList[itemIndex].quanlity = quanlityOfProduct + 1;
-    // localStorage.setItem("cartItem", JSON.stringify(this.cartList)); // Update array localStorage
+
+    // Detele product item on localStorage
     const itemIndex = [...this.cartList].findIndex(item => item.id === parseInt(currentProduct.dataset.id)); // Get product item index on localStorage
+    
+    const quanlityOfProduct = this.cartList[itemIndex].quanlity; // Get product item quanlity
+    console.log(quanlityOfProduct);
+    this._productService.deleteItemCart(quanlityOfProduct);
+
     this.cartList.splice(itemIndex, 1); // At index of product item got before, delete this product item
     localStorage.setItem("cartItem", JSON.stringify(this.cartList)); // Update array localStorage
+
+
   }
 
   routingSuccessOrder() {
@@ -107,5 +115,6 @@ export class CartComponent implements OnInit, AfterContentChecked {
       return;
     }
     this.router.navigate(['success-order']);
+    this._productService.resetItemCart();
   }
 }
