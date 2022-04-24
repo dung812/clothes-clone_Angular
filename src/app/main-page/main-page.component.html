@@ -9,7 +9,7 @@
             disableOnInteraction: false
             }">
         <ng-template swiperSlide *ngFor="let slide of slides">
-            <a [routerLink]="slide.url" class="h-[75vh] sm:h-screen"><img [src]="slide.src" [alt]="slide.alt" /></a>
+            <a class="h-[75vh] sm:h-screen"><img [src]="slide.src" [alt]="slide.alt" /></a>
         </ng-template>
     </swiper>
   
