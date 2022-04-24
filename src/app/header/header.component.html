@@ -21,7 +21,7 @@
                 <ng-container *ngFor="let gender of genderList">
                     <li class="nav_item border border-gray-200 sm:border-0 cursor-pointer"><a class="sm:px-5 sm:py-4 p-5 block sm:p-0" (click)="onSelect(gender); scrollTop()">{{ gender.title }}</a></li>
                 </ng-container>
-                <li class="nav_item border border-gray-200 sm:border-0"><a class="sm:px-5 sm:py-4 p-5 block sm:p-0" routerLink="/blog" (click)="scrollTop()">Blog</a></li>
+                <li class="nav_item border border-gray-200 sm:border-0"><a class="sm:px-5 sm:py-4 p-5 block sm:p-0" routerLink="/blog" (click)="scrollTop()">Bài viết</a></li>
             </ul>
         </div>
 
@@ -29,8 +29,8 @@
             <div class="px-3 py-2 cursor-pointer hover:bg-gray-100" (click)="closeSearchArea()">
                 <i class="uil uil-search text-2xl"></i>
             </div>
-            <div class="px-3 py-2 relative cursor-pointer hover:bg-gray-100">
-                <a routerLink="/cart"><i class="uil uil-shopping-bag text-2xl"></i><span class="inline-block absolute text-xs tracking-bigger font-bold">(1)</span></a>
+            <div class="px-3 py-2 relative cursor-pointer hover:bg-gray-100" routerLink="/cart">
+                <i class="uil uil-shopping-bag text-2xl"></i><span class="inline-block absolute text-xs tracking-bigger font-bold">({{ quanlityCart }})</span>
             </div>
         </div>
     </div>

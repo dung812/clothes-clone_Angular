@@ -17,7 +17,7 @@
     <section class="categories__banner" class="grid grid-cols-2 gap-3 md:gap-5 py-4">
         <div class="hover:opacity-60" *ngFor="let gender of genderList">
             <div (click)="onSelect(gender)">
-                <img [src]="gender.image" [alt]="gender.alt">
+                <img [src]="'../../../assets/images/main-page/' + gender.image" [alt]="gender.alt">
             </div>
         </div>
     </section>
@@ -25,11 +25,11 @@
     <!--============================== WHAT NEW ==============================--> 
     <section class="py-14" id="what_new">
         <div class="md:container md:mx-auto md:px-6">
-            <p class="text-2xl mb-4 md:text-5xl font-semibold uppercase text-center cursor-pointer">what's new</p>
+            <p class="text-2xl mb-4 md:text-5xl font-semibold uppercase text-center cursor-pointer">Sản phẩm mới</p>
     
             <div class="flex justify-center items-center mb-5">
-                <div class="category-item mr-5 active" (click)="activeCategory($event)" data-title="him">For him</div>
-                <div class="category-item" (click)="activeCategory($event)" data-title="her">For her</div>
+                <div class="category-item mr-5 active" (click)="activeCategory($event)" data-title="him">Dành cho nam</div>
+                <div class="category-item" (click)="activeCategory($event)" data-title="her">Dành cho nữ</div>
             </div>
     
             <swiper data-content="him" class="sliderProduct"
@@ -58,7 +58,7 @@
             <ng-template swiperSlide *ngFor="let product of productForHim">
                 <div>
                     <a (click)="showProductDetail(product); scrollTop()">
-                        <img [src]="product.image[1]" alt="" class="hover:opacity-80">
+                        <img [src]="'../../../assets/images/product/' + product.image[1]" alt="" class="hover:opacity-80">
                     </a>
                     <div class="pt-3 text-left">
                         <p class="font-semibold text-base">{{ product.name | titlecase }}</p>
@@ -95,7 +95,7 @@
                 <ng-template swiperSlide *ngFor="let product of productForHer">
                     <div>
                         <a (click)="showProductDetail(product); scrollTop()">
-                            <img [src]="product.image[1]" alt="">
+                            <img [src]="'../../../assets/images/product/' + product.image[1]" alt="">
                         </a>
                         <div class="pt-3 text-left">
                             <p class="font-semibold text-base">{{ product.name | titlecase }}</p>
@@ -112,7 +112,7 @@
     <!--=============================== STYLE PICK ===============================-->
     <section class="py-14 bg-section" id="style_pick">
         <div class="md:container md:mx-auto md:px-6">
-            <p class="text-2xl mb-14 text-white md:text-5xl font-semibold uppercase text-center cursor-pointer">style pick</p>
+            <p class="text-2xl mb-14 text-white md:text-5xl font-semibold uppercase text-center cursor-pointer">Sản phẩm bán chạy</p>
             <swiper
             [slidesPerView]="2"
             [spaceBetween]="20"
@@ -131,7 +131,7 @@
             class="mySwiper">
             <ng-template swiperSlide class="hover:opacity-80" *ngFor="let product of productForHim">
                 <a (click)="showProductDetail(product); scrollTop()">
-                    <img [src]="product.image[1]" [alt]="product.alt">
+                    <img [src]="'../../../assets/images/product/' + product.image[1]" [alt]="product.alt">
                 </a>
             </ng-template>
           </swiper>
@@ -142,16 +142,16 @@
     <section class="py-14" id="weekly_best">
         <div class="md:container md:mx-auto md:px-6">
 
-            <p class="text-2xl mb-4 md:text-5xl font-semibold uppercase text-center cursor-pointer">what's new</p>
+            <p class="text-2xl mb-4 md:text-5xl font-semibold uppercase text-center cursor-pointer">Sản phẩm mới</p>
             <div class="flex justify-center items-center mb-5">
-                <div class="tabs-heading mr-5 active" (click)="activeProduct($event)" data-title="him">For him</div>
-                <div class="tabs-heading" (click)="activeProduct($event)" data-title="her">For her</div>
+                <div class="tabs-heading mr-5 active" (click)="activeProduct($event)" data-title="him">Dành cho nam</div>
+                <div class="tabs-heading" (click)="activeProduct($event)" data-title="her">Dành cho nữ</div>
             </div>
             
             <div data-content="him" class="tabs-content">
                 <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 md:grid-cols-4 md:gap-5">
-                    <a (click)="showProductDetail(product); scrollTop()" class="block mt-3" *ngFor="let product of productForHim">
-                        <img [src]="product.image[1]" alt="product.alt" class="hover:opacity-80">
+                    <a (click)="showProductDetail(product); scrollTop()" class="block mt-3" *ngFor="let product of productForHimWeekly">
+                        <img [src]="'../../../assets/images/product/' + product.image[1]" alt="product.alt" class="hover:opacity-80">
                         <div class="pt-3 text-left">
                             <p class="font-semibold text-base">{{ product.name | titlecase }}</p>
                             <p class="font-semibold text-lg">{{ product.price | currency:'VND' }}</p>
@@ -163,8 +163,8 @@
 
             <div data-content="her" class="tabs-content hidden">
                 <div  class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 md:grid-cols-4 md:gap-5">
-                    <a (click)="showProductDetail(product); scrollTop()" class="block mt-3" *ngFor="let product of productForHer">
-                        <img [src]="product.image[1]" alt="product.alt" class="hover:opacity-80">
+                    <a (click)="showProductDetail(product); scrollTop()" class="block mt-3" *ngFor="let product of productForHerWeekly">
+                        <img [src]="'../../../assets/images/product/' + product.image[1]" alt="product.alt" class="hover:opacity-80">
                         <div class="pt-3 text-left">
                             <p class="font-semibold text-base">{{ product.name | titlecase }}</p>
                             <p class="font-semibold text-lg">{{ product.price | currency:'VND' }}</p>
@@ -181,7 +181,7 @@
     <section class="py-14" id="ssstory">
         <div class="md:container md:mx-auto md:px-6">
 
-            <p class="text-2xl mb-4 md:text-5xl font-semibold uppercase text-center cursor-pointer">ssstory</p>
+            <p class="text-2xl mb-4 md:text-5xl font-semibold uppercase text-center cursor-pointer">Bài viết nổi bật</p>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <div *ngFor="let blog of blogs"> 
                     <a (click)="routingBlogDetail()" class="blog-item mt-5 block hover:text-gray-500">

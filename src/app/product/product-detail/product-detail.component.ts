@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { ProductService } from './../../product.service';
+import { ICartItem } from '../../models/cartItem';
 
 @Component({
   selector: 'app-product-detail',
@@ -8,6 +9,8 @@ import { ProductService } from './../../product.service';
   styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements OnInit, AfterViewInit {
+
+
 
   public idProduct: number = 0;
   public productDetail : any;
@@ -23,7 +26,6 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-
   }
   
 
@@ -61,5 +63,31 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
       tutorialContent?.forEach((item: any) => item.classList.add('hidden'));
     }
   }
-  
+ 
+  addItemCart(productDetail: any) {
+    // kiểm tra xem có ls cartItem ko, nếu ko thì [], có thì lấy ra mảng cartItem và parse json
+    const cartList: ICartItem[] = localStorage.length > 0 ? JSON.parse(localStorage.getItem("cartItem") || '[]') : [];
+    const product = [...cartList].find(item => item.id === productDetail.id);
+    const quanlityOfProduct = product?.quanlity ?? 1;
+    
+    let productItem;
+    // Kiểm tra xem product id nhập vào đã tồn tại trong list hay chưa
+    if (product) { // Nếu có tồn tại thì duyệt list lấy product quanlity + 1
+      const itemIndex = [...cartList].findIndex(item => item.id === productDetail.id);
+      cartList[itemIndex].quanlity = quanlityOfProduct + 1;
+    }
+    else { // Nếu không tồn tại trong list thì thêm mới
+      productItem = {
+        id: productDetail.id,
+        name: productDetail.name,
+        image: productDetail.image[1],
+        price: productDetail.price,
+        quanlity: quanlityOfProduct
+      }
+      cartList.push(productItem);
+    }
+    localStorage.setItem("cartItem", JSON.stringify(cartList));
+    alert(`Thêm thành công sản phẩm "${productDetail.name}" vào giỏ hàng`);
+    this._productService.increamentItemCart();
+  }
 }

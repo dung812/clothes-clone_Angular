@@ -1,7 +1,7 @@
-import { Component, AfterViewInit, OnInit, SimpleChanges } from '@angular/core';
-import { PRODUCT } from './../models/product';
+import { Component, AfterViewInit, OnInit, Input } from '@angular/core';
 import { ProductService } from './../product.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { ICartItem } from '../models/cartItem';
 
 @Component({
   selector: 'app-header',
@@ -9,6 +9,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit, AfterViewInit {
+  @Input() quanlityCart: number = 0;
 
   genderList: any = [];
 

@@ -2,7 +2,7 @@
     <div class="image-detail-s md:hidden">
         <ul>
             <li *ngFor="let image of productDetail.image">
-                <img [src]="image" alt="productDetail.alt">
+                <img [src]="'../../../assets/images/product/' + image" [alt]="productDetail.alt">
             </li>
         </ul>
     </div>
@@ -10,7 +10,7 @@
     <div class="image-detail-l hidden md:block md:col-span-4">
         <div class="grid grid-cols-2">
             <div *ngFor="let image of productDetail.image">
-                <img [src]="image" alt="productDetail.alt">
+                <img [src]="'../../../assets/images/product/' + image" [alt]="productDetail.alt">
             </div>
         </div>
     </div>
@@ -25,7 +25,7 @@
             <div class="mb-[24px]">
                 <p class="text-base font-semibold mb-[10px]">Chọn Màu:</p>
                 <div class="grid grid-cols-4 gap-[16px] overflow-hidden">
-                    <img [src]="productDetail.image[0]" alt="" class="w-[80px] h-auto border border-black cursor-pointer">
+                    <img [src]="'../../../assets/images/product/' + productDetail.image[0]" [alt]="productDetail.alt" class="w-[80px] h-auto border border-black cursor-pointer">
                 </div>
             </div>
             
@@ -38,7 +38,7 @@
                 </div>
             </div>
 
-            <div class="mb-[24px]">
+            <div class="mb-[24px]" (click)="addItemCart(productDetail)">
                 <div class="text-center uppercase py-3 bg-gray-400 text-white font-semibold text-2xl rounded-md transition ease-linear duration-150 delay-75 hover:bg-black hover:text-white cursor-pointer">thêm vào giỏ hàng</div>
             </div>
 

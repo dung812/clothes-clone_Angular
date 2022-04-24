@@ -2,31 +2,64 @@
     <div>
         <div class="border border-gray-400 rounded p-5 bg-white mb-4">
             <p class="uppercase text-xl font-semibold mb-2">thông tin giao hàng</p>
-            <form action="">
                 <div class="form-group mb-5">
                     <input type="text" name="name" class="w-full border border-gray-400 rounded px-[15px] py-[10px] text-sm" placeholder="* Họ & tên" />
                 </div>
 
                 <div class="form-group mb-5">
-                    <input type="text" name="name" class="w-full border border-gray-400 rounded px-[15px] py-[10px] text-sm" placeholder="Email" />
+                    <input type="text" name="email" class="w-full border border-gray-400 rounded px-[15px] py-[10px] text-sm" placeholder="Email" />
                 </div>
 
                 <div class="form-group mb-5">
-                    <input type="text" name="name" class="w-full border border-gray-400 rounded  px-[15px] py-[10px] text-sm" placeholder="* Số điện thoại" />
+                    <input type="text" name="phone" class="w-full border border-gray-400 rounded  px-[15px] py-[10px] text-sm" placeholder="* Số điện thoại" />
                 </div>
 
                 <div class="mb-5 md:flex justify-between">
-                    <select class="block w-full md:w-auto mb-5 md:mb-0 md:inline-block text-gray-400 border border-gray-400 rounded px-[15px] py-[10px] text-sm" name="ls_province"></select>
-                    <select class="block w-full md:w-auto mb-5 md:mb-0 md:inline-block text-gray-400 border border-gray-400 rounded px-[15px] py-[10px] text-sm" name="ls_district"></select>
-                    <select class="block w-full md:w-auto md:inline-block text-gray-400 border border-gray-400 rounded px-[15px] py-[10px] text-sm" name="ls_ward"></select>
+                    <select class="block min-w-[184px] md:w-auto mb-5 md:mb-0 md:inline-block text-gray-400 border border-gray-400 rounded px-[15px] py-[10px] text-sm" name="ls_province">
+                        <option selected hidden>* Chọn tỉnh / thành phố</option>
+                        <option value="">Hồ Chí Minh</option>
+                        <option value="">Hà Nội</option>
+                        <option value="">Đà Nẵng</option>
+                        <option value="">Bình Định</option>
+                        <option value="">Bình Phước</option>
+                        <option value="">Quảng Ngãi</option>
+                        <option value="">An Giang</option>
+                        <option value="">Bình Phú</option>
+                    </select>
+                    <select class="block min-w-[184px] md:w-auto mb-5 md:mb-0 md:inline-block text-gray-400 border border-gray-400 rounded px-[15px] py-[10px] text-sm" name="ls_district">
+                        <option selected hidden>* Chọn Quận/huyện</option>
+                        <option value="">Quận 1</option>
+                        <option value="">Quận 2</option>
+                        <option value="">Quận 3</option>
+                        <option value="">Quận 4</option>
+                        <option value="">Quận 5</option>
+                        <option value="">Quận 6</option>
+                        <option value="">Quận 7</option>
+                        <option value="">Quận 8</option>
+                        <option value="">Quận 9</option>
+                        <option value="">Quận 10</option>
+                        <option value="">Quận 11</option>
+                        <option value="">Quận 12</option>
+                        <option value="">Quận Bình Tân</option>
+                        <option value="">Quận Bình Thạnh</option>
+                        <option value="">Quận Thủ Đức</option>
+                    </select>
+                    <select class="block min-w-[184px] md:w-auto md:inline-block text-gray-400 border border-gray-400 rounded px-[15px] py-[10px] text-sm" name="ls_ward">
+                        <option selected hidden>* Chọn Phường/Xã</option>
+                        <option value="">Phường Bến Nghé</option>
+                        <option value="">Phường Bến Thành</option>
+                        <option value="">Phường Cô Giang</option>
+                        <option value="">Phường Nguyễn Cư Trinh</option>
+                        <option value="">Phường Phạm Ngũ Lão</option>
+                        <option value="">Phường Đa Kao</option>
+                    </select>
                 </div>
 
                 <div class="form-group mb-5">
-                    <input type="text" name="name" class="w-full border border-gray-400 rounded px-[15px] py-[10px] text-sm" placeholder="* Số nhà tên đường..." />
+                    <input type="text" name="address" class="w-full border border-gray-400 rounded px-[15px] py-[10px] text-sm" placeholder="* Số nhà tên đường..." />
                 </div>
 
                 <p class="text-gray-500 text-sm">(*) là trường không được để trống</p>
-            </form>
         </div>
         <div class="border border-gray-400 rounded p-5 bg-white">
             <p class="uppercase text-xl font-semibold mb-2">phương thức thanh toán</p>
@@ -47,75 +80,18 @@
     <div class="border border-gray-400 rounded p-5 bg-white">
         <div class="list_cart overflow-y-auto overflow-x-hidden h-[50vh]">
             
-            <div class="item_cart grid grid-cols-8 gap-4 mb-[14px]">
+            <div class="item_cart grid grid-cols-8 gap-4 mb-[14px]" *ngFor="let item of cartList" [attr.data-id]="item.id">
                 <div class="col-span-2">
-                    <img src="../../assets/images/product/for-him/2b.jpeg" alt="" class="w-full md:w-[70%]">
+                    <img [src]="'../../../assets/images/product/' + item.image" alt="san-pham-trong-gio-hang" class="w-full md:w-[70%]">
                 </div>
         
                 <div class="col-span-5">
-                    <p class="uppercase font-bold text-base">CROPPED DENIM PANTS</p>
-                    <p class="text-base">419.000 ₫</p>
+                    <p class="uppercase font-bold text-base">{{ item.name }}</p>
+                    <p class="text-base">{{ item.price | currency:'VND' }}</p>
                     <div class="flex relative mt-2">
                         <button class="py-1 px-3 text-xl cursor-pointer" data-quanlity="descrease" (click)="changeQuanlity($event)">-</button>
-                        <input type="number" value="1" class="w-16 text-sm border border-gray-400 rounded-md text-center" id="quanlity_product">
-                        <button class="py-1 px-3 text-xl cursor-pointer" data-quanlity="inscreate" (click)="changeQuanlity($event)">+</button>
-                    </div>
-                </div>
-        
-                <div class="col-span-1 flex justify-center items-start cursor-pointer" (click)="deteleProductInCart($event)">
-                    <i class="uil uil-times text-3xl text-gray-400"></i>
-                </div>
-            </div>
-            <div class="item_cart grid grid-cols-8 gap-4 mb-[14px]">
-                <div class="col-span-2">
-                    <img src="../../assets/images/product/for-him/1a.jpeg" alt="" class="w-full md:w-[70%]">
-                </div>
-        
-                <div class="col-span-5">
-                    <p class="uppercase font-bold text-base">CROPPED DENIM PANTS</p>
-                    <p class="text-base">419.000 ₫</p>
-                    <div class="flex relative mt-2">
-                        <button class="py-1 px-3 text-xl cursor-pointer" data-quanlity="descrease" (click)="changeQuanlity($event)">-</button>
-                        <input type="number" value="1" class="w-16 text-sm border border-gray-400 rounded-md text-center" id="quanlity_product">
-                        <button class="py-1 px-3 text-xl cursor-pointer" data-quanlity="inscreate" (click)="changeQuanlity($event)">+</button>
-                    </div>
-                </div>
-        
-                <div class="col-span-1 flex justify-center items-start cursor-pointer" (click)="deteleProductInCart($event)">
-                    <i class="uil uil-times text-3xl text-gray-400"></i>
-                </div>
-            </div>
-            <div class="item_cart grid grid-cols-8 gap-4 mb-[14px]">
-                <div class="col-span-2">
-                    <img src="../../assets/images/product/for-him/3c.jpeg" alt="" class="w-full md:w-[70%]">
-                </div>
-        
-                <div class="col-span-5">
-                    <p class="uppercase font-bold text-base">CROPPED DENIM PANTS</p>
-                    <p class="text-base">419.000 ₫</p>
-                    <div class="flex relative mt-2">
-                        <button class="py-1 px-3 text-xl cursor-pointer" data-quanlity="descrease" (click)="changeQuanlity($event)">-</button>
-                        <input type="number" value="1" class="w-16 text-sm border border-gray-400 rounded-md text-center" id="quanlity_product">
-                        <button class="py-1 px-3 text-xl cursor-pointer" data-quanlity="inscreate" (click)="changeQuanlity($event)">+</button>
-                    </div>
-                </div>
-        
-                <div class="col-span-1 flex justify-center items-start cursor-pointer" (click)="deteleProductInCart($event)">
-                    <i class="uil uil-times text-3xl text-gray-400"></i>
-                </div>
-            </div>
-            <div class="item_cart grid grid-cols-8 gap-4 mb-[14px]">
-                <div class="col-span-2">
-                    <img src="../../assets/images/product/for-him/4d.jpeg" alt="" class="w-full md:w-[70%]">
-                </div>
-        
-                <div class="col-span-5">
-                    <p class="uppercase font-bold text-base">CROPPED DENIM PANTS</p>
-                    <p class="text-base">419.000 ₫</p>
-                    <div class="flex relative mt-2">
-                        <button class="py-1 px-3 text-xl cursor-pointer" data-quanlity="descrease" (click)="changeQuanlity($event)">-</button>
-                        <input type="number" value="1" class="w-16 text-sm border border-gray-400 rounded-md text-center" id="quanlity_product">
-                        <button class="py-1 px-3 text-xl cursor-pointer" data-quanlity="inscreate" (click)="changeQuanlity($event)">+</button>
+                        <input type="number" [value]="item.quanlity" class="w-16 text-sm border border-gray-400 rounded-md text-center" id="quanlity_product" disabled />
+                        <button class="py-1 px-3 text-xl cursor-pointer" data-quanlity="increase" (click)="changeQuanlity($event)" ng-click="test()">+</button>
                     </div>
                 </div>
         
@@ -133,7 +109,7 @@
             </div>
             <div class="flex justify-between font-semibold my-2 text-lg">
                 <p>Tổng:</p>
-                <p class="text-left">1.123123 đ</p>
+                <p class="text-left">{{ totalPrice | currency:'VND' }}</p>
             </div>
             <div class="flex justify-between my-2 text-gray-400 font-semibold">
                 <p>Ưu đãi:</p>
@@ -145,10 +121,10 @@
             </div>
             <div class="flex justify-between font-semibold my-2 text-lg">
                 <p>Thành tiền:</p>
-                <p class="text-left">1.123123 đ</p>
+                <p class="text-left">{{ totalPrice | currency:'VND' }}</p>
             </div>
     
-            <div class="p-[15px] text-center bg-black text-white text-sm rounded cursor-pointer hover:opacity-60">Hoàn tất đơn hàng</div>
+            <div class="p-[15px] text-center bg-black text-white text-sm rounded cursor-pointer hover:opacity-60" (click)="submitForm()">Hoàn tất đơn hàng</div>
         </div>
     </div>
 
