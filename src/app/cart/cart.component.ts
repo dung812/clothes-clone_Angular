@@ -1,8 +1,8 @@
+import { CommonService } from './../Services/common.service';
 import { Component, OnInit, AfterContentChecked } from '@angular/core';
 import { ICartItem } from '../models/cartItem';
 import { Router } from '@angular/router';
-import { ProductService } from '../product.service';
-declare const LocalPicker: any;
+
 
 @Component({
   selector: 'app-cart',
@@ -14,7 +14,7 @@ export class CartComponent implements OnInit, AfterContentChecked {
 
   public totalPrice: number = 0;
 
-  constructor(private router: Router, private _productService: ProductService) {}
+  constructor(private router: Router, private _commonService: CommonService) {}
 
   ngOnInit(): void {
     this.totalPrice = this.cartList.reduce(function(previousValue, currentValue) {
@@ -48,7 +48,7 @@ export class CartComponent implements OnInit, AfterContentChecked {
         
         // Update localStorage items
         this.cartList[itemIndex].quanlity = quanlityOfProduct - 1;
-        this._productService.descreamentItemCart();
+        this._commonService.descreamentItemCart();
       }
     } else if (event.target.dataset.quanlity === 'increase') {
       // Update DOM
@@ -57,7 +57,7 @@ export class CartComponent implements OnInit, AfterContentChecked {
 
       // Update localStorage items
       this.cartList[itemIndex].quanlity = quanlityOfProduct + 1;
-      this._productService.increamentItemCart();
+      this._commonService.increamentItemCart();
     }
     localStorage.setItem("cartItem", JSON.stringify(this.cartList)); // Update array localStorage
   }
@@ -88,7 +88,7 @@ export class CartComponent implements OnInit, AfterContentChecked {
     
     const quanlityOfProduct = this.cartList[itemIndex].quanlity; // Get product item quanlity
     console.log(quanlityOfProduct);
-    this._productService.deleteItemCart(quanlityOfProduct);
+    this._commonService.deleteItemCart(quanlityOfProduct);
 
     this.cartList.splice(itemIndex, 1); // At index of product item got before, delete this product item
     localStorage.setItem("cartItem", JSON.stringify(this.cartList)); // Update array localStorage
@@ -112,6 +112,6 @@ export class CartComponent implements OnInit, AfterContentChecked {
       return;
     }
     this.router.navigate(['success-order']);
-    this._productService.resetItemCart();
+    this._commonService.resetItemCart();
   }
 }

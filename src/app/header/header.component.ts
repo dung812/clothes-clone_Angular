@@ -1,5 +1,5 @@
 import { Component, AfterViewInit, OnInit, Input } from '@angular/core';
-import { ProductService } from './../product.service';
+import { CommonService } from '../Services/common.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { ICartItem } from '../models/cartItem';
 
@@ -13,10 +13,10 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
   genderList: any = [];
 
-  constructor(private _productService: ProductService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private _commonService: CommonService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.genderList = this._productService.getGenderRouting();
+    this.genderList = this._commonService.getGenderRouting();
   }
 
   ngAfterViewInit() {

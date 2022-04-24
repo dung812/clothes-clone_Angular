@@ -1,6 +1,6 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { ICartItem } from './models/cartItem';
-import { ProductService } from './product.service';
+import { CommonService } from './Services/common.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +14,7 @@ export class AppComponent implements OnInit{
   public cartList: ICartItem[] = localStorage.length > 0 ? JSON.parse(localStorage.getItem("cartItem") || '[]') : [];
   public quanlityCartItem: number = 0;
 
-  constructor(private _productService: ProductService) {
+  constructor(private _commonService: CommonService) {
 
   }
   ngOnInit(): void {
@@ -22,7 +22,7 @@ export class AppComponent implements OnInit{
       //   return previousValue += currentValue.quanlity
       // }, 0);   
 
-    this._productService.totalQuanlityCart$.subscribe((total) => {
+    this._commonService.totalQuanlityCart$.subscribe((total) => {
       this.quanlityCartItem = total;
     });
 

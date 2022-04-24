@@ -1,12 +1,12 @@
+import { ICartItem } from './../models/cartItem';
+import { PRODUCT } from './../models/product';
 import { Injectable } from '@angular/core';
-import { PRODUCT } from './models/product';
 import { BehaviorSubject } from 'rxjs';
-import { ICartItem } from './models/cartItem';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class ProductService {
+export class CommonService {
   public cartList: ICartItem[] = localStorage.length > 0 ? JSON.parse(localStorage.getItem("cartItem") || '[]') : [];
   public quanlityCartItem = this.cartList.reduce(function(previousValue, currentValue) {
         return previousValue += currentValue.quanlity

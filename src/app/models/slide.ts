@@ -1,7 +1,6 @@
 export interface SLIDE {
     id: number;
-    srcDesktop: string;
-    srcMobile: string;
+    src: string;
     alt: string;
     url: string;
   }

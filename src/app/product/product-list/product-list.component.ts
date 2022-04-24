@@ -1,4 +1,4 @@
-import { ProductService } from './../../product.service';
+import { CommonService } from './../../Services/common.service';
 import { PRODUCT } from './../../models/product';
 import { Component, OnInit, AfterContentChecked } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
@@ -26,7 +26,7 @@ export class ProductListComponent implements OnInit, AfterContentChecked {
 
   public products: PRODUCT[] = [];
 
-  constructor(private _productService: ProductService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private _commonService: CommonService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) =>{
@@ -37,12 +37,12 @@ export class ProductListComponent implements OnInit, AfterContentChecked {
   
   ngAfterContentChecked() {
     if (this.productGender === "for-him") {
-      this.products = this._productService.getProducts().filter(e => e.gender === "him");
+      this.products = this._commonService.getProducts().filter(e => e.gender === "him");
       // this.genderTitle = "for him";
       this.genderTitle = "Quần áo nam";
     }
     else if (this.productGender === "for-her") {
-      this.products = this._productService.getProducts().filter(e => e.gender === "her");
+      this.products = this._commonService.getProducts().filter(e => e.gender === "her");
       // this.genderTitle = "for her";
       this.genderTitle = "Quần áo nữ";
     }

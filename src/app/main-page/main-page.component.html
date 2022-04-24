@@ -9,14 +9,14 @@
             disableOnInteraction: false
             }">
         <ng-template swiperSlide *ngFor="let slide of slides">
-            <a [routerLink]="slide.url" class="h-screen"><img [src]="slide.srcDesktop" [alt]="slide.alt" /></a>
+            <a [routerLink]="slide.url" class="h-[75vh] sm:h-screen"><img [src]="slide.src" [alt]="slide.alt" /></a>
         </ng-template>
     </swiper>
   
     <!--============================== CATEGORIES BANNER ==============================-->
     <section class="categories__banner" class="grid grid-cols-2 gap-3 md:gap-5 py-4">
         <div class="hover:opacity-60" *ngFor="let gender of genderList">
-            <div (click)="onSelect(gender)">
+            <div (click)="onSelect(gender); scrollTop()">
                 <img [src]="'../../../assets/images/main-page/' + gender.image" [alt]="gender.alt">
             </div>
         </div>

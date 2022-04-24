@@ -1,4 +1,4 @@
-import { ProductService } from './product.service';
+import { CommonService } from './Services/common.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -36,7 +36,7 @@ import { SuccessOrderComponent } from './success-order/success-order.component';
     FormsModule,
     SwiperModule
   ],
-  providers: [ProductService],
+  providers: [CommonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

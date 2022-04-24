@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
-import { ProductService } from './../../product.service';
+import { CommonService } from './../../Services/common.service';
 import { ICartItem } from '../../models/cartItem';
 
 @Component({
@@ -15,14 +15,14 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
   public idProduct: number = 0;
   public productDetail : any;
 
-  constructor(private _productService: ProductService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private _commonService: CommonService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) =>{
       let id = parseInt(params.get('id') || '');
       this.idProduct = id;
     });
-    this.productDetail = this._productService.getProducts().find(p => p.id === this.idProduct);
+    this.productDetail = this._commonService.getProducts().find(p => p.id === this.idProduct);
   }
 
   ngAfterViewInit() {
@@ -88,6 +88,6 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
     }
     localStorage.setItem("cartItem", JSON.stringify(cartList));
     alert(`Thêm thành công sản phẩm "${productDetail.name}" vào giỏ hàng`);
-    this._productService.increamentItemCart();
+    this._commonService.increamentItemCart();
   }
 }

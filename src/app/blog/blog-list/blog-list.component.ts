@@ -11,7 +11,16 @@ export class BlogListComponent implements OnInit {
   stringHer = "Her clothes";
   constructor(private router: Router) { }
 
+  shortcutTitle(str: string) {
+    const result =  str.split(" ").slice(0,5);
+    return [...result, "..."].join(" ");
+  }
+
   ngOnInit(): void {
+    const titleBlogs = document.querySelectorAll('.titleBlogs');
+    titleBlogs.forEach(item => {
+      item.textContent = this.shortcutTitle(item.textContent || "");
+    })
   }
 
   routingDetail() {

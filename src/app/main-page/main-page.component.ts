@@ -1,11 +1,10 @@
+import { CommonService } from '../Services/common.service';
 import { PRODUCT } from './../models/product';
-import { ProductService } from './../product.service';
-import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
+import { SLIDE } from './../models/slide';
+import { Component, OnInit, AfterContentChecked, ViewEncapsulation, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { SwiperComponent } from "swiper/angular";
 import SwiperCore, { Autoplay, Pagination, Navigation } from "swiper";
-
-
 
 // install Swiper modules
 SwiperCore.use([Autoplay, Pagination, Navigation]);
@@ -18,7 +17,7 @@ SwiperCore.use([Autoplay, Pagination, Navigation]);
   encapsulation: ViewEncapsulation.None,
 })
 
-export class MainPageComponent implements OnInit {
+export class MainPageComponent implements OnInit, AfterContentChecked {
 
   genderList: any = [];
 
@@ -27,22 +26,7 @@ export class MainPageComponent implements OnInit {
   public productForHimWeekly: PRODUCT[] = [];
   public productForHerWeekly: PRODUCT[] = [];
 
-  slides = [
-    {
-      id:1,
-      srcDesktop:'../../assets/images/banner/banner-1.jpeg',
-      srcMobile:'../../assets/images/banner/banner-1-mobile.jpeg',
-      alt:'Banner_1',
-      url:'/product'
-    },
-    {
-      id:2,
-      srcDesktop:'../../assets/images/banner/banner-2.jpeg',
-      srcMobile:'../../assets/images/banner/banner-2-mobile.jpeg',
-      alt:'Banner_2',
-      url:'/product'
-    },
-  ];
+  public slides: SLIDE[] = []; 
 
   public blogs = [
     { id: "1", title: "6 BÍ QUYẾT PHỐI MÀU GIÚP OUTFIT CỦA BẠN TRỞ NÊN NỔI BẬT HƠN", image: "background-image:url(../../assets/images/main-page/ssstory/1644568834577.jpeg)" },
@@ -50,13 +34,12 @@ export class MainPageComponent implements OnInit {
     { id: "3", title: "Những items làm từ vải Linen mà bạn không thể bỏ qua", image: "background-image:url(../../assets/images/main-page/ssstory/1636339044098.jpeg)" },
     { id: "4", title: "5 mẹo bất hủ để bảo quản chiếc áo trắng của bạn", image: "background-image:url(../../assets/images/main-page/ssstory/1636338432145.jpeg)" },
   ]
-
-  constructor(private _productService: ProductService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private _commonService: CommonService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.genderList = this._productService.getGenderRouting();
-    this.productForHim = this._productService.getProducts().filter(e => e.gender === "him");
-    this.productForHer = this._productService.getProducts().filter(e => e.gender === "her");
+    this.genderList = this._commonService.getGenderRouting();
+    this.productForHim = this._commonService.getProducts().filter(e => e.gender === "him");
+    this.productForHer = this._commonService.getProducts().filter(e => e.gender === "her");
 
     for (let i = 0; i < 8; i++) {
       this.productForHimWeekly.push(this.productForHim[i]);
@@ -65,14 +48,49 @@ export class MainPageComponent implements OnInit {
 
   };
 
+  ngAfterContentChecked():void {
+    if (window.innerWidth < 640) {
+      this.slides = [
+        {
+          id:1,
+          src:'../../assets/images/banner/banner-1-mobile.jpeg',
+          alt:'Banner_1',
+          url:'/product'
+        },
+        {
+          id:2,
+          src:'../../assets/images/banner/banner-2-mobile.jpeg',
+          alt:'Banner_2',
+          url:'/product'
+        },
+      ];
+    }
+    else {
+      this.slides = [
+        {
+          id:1,
+          src:'../../assets/images/banner/banner-1.jpeg',
+          alt:'Banner_1',
+          url:'/product'
+        },
+        {
+          id:2,
+          src:'../../assets/images/banner/banner-2.jpeg',
+          alt:'Banner_2',
+          url:'/product'
+        },
+      ];
+    }
+  }
+
   activeCategory(event:any):void {
     const categoryItem = document.querySelectorAll(".category-item");
-    const slides = document.querySelectorAll('.sliderProduct');
+    const slidesDOM = document.querySelectorAll('.sliderProduct');
     const titleDataset = event.target.dataset.title;
 
-    slides.forEach((item: any) => {
+    slidesDOM.forEach((item: any) => {
       if (item.dataset.content === titleDataset){
-        slides.forEach(item => item.classList.add("hidden"));
+        slidesDOM.forEach(item => item.classList.add("hidden"));
         item.classList.remove("hidden")
       }
     });
