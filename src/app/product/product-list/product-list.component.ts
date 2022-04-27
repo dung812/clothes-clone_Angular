@@ -1,3 +1,4 @@
+import { ServerHttpService } from './../../Services/server-http.service';
 import { CommonService } from './../../Services/common.service';
 import { PRODUCT } from './../../models/product';
 import { Component, OnInit, AfterContentChecked } from '@angular/core';
@@ -25,10 +26,14 @@ export class ProductListComponent implements OnInit, AfterContentChecked {
   ]
 
   public products: PRODUCT[] = [];
-
-  constructor(private _commonService: CommonService, private route: ActivatedRoute, private router: Router) { }
+  public tempArr: PRODUCT[] = [];
+  constructor(private _commonService: CommonService, private _serverHttp : ServerHttpService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
+    this._serverHttp.getProducts().subscribe((data) => {
+      this.products = data;
+      this.tempArr = data;
+    });
     this.route.paramMap.subscribe((params: ParamMap) =>{
       let gender = String(params.get('gender'));
       this.productGender = gender;
@@ -36,19 +41,23 @@ export class ProductListComponent implements OnInit, AfterContentChecked {
   }
   
   ngAfterContentChecked() {
+    this.products = this.tempArr; // Gán lại mảng temp chứa giá trị ban đầu cho mảng product
     if (this.productGender === "for-him") {
-      this.products = this._commonService.getProducts().filter(e => e.gender === "him");
+      // this.products = this._commonService.getProducts().filter(e => e.gender === "him");
+      this.products = this.products.filter(e => e.gender === "him");
       // this.genderTitle = "for him";
       this.genderTitle = "Quần áo nam";
     }
     else if (this.productGender === "for-her") {
-      this.products = this._commonService.getProducts().filter(e => e.gender === "her");
+      // this.products = this._commonService.getProducts().filter(e => e.gender === "her");
+      this.products = this.products.filter(e => e.gender === "her");
       // this.genderTitle = "for her";
       this.genderTitle = "Quần áo nữ";
     }
     else {
       this.router.navigate(['pagenotfound']);
     }
+    
   }
 
   showFilterItem(event:any) {

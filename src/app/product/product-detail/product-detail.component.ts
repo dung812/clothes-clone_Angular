@@ -1,4 +1,6 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { PRODUCT } from './../../models/product';
+import { ServerHttpService } from './../../Services/server-http.service';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { CommonService } from './../../Services/common.service';
 import { ICartItem } from '../../models/cartItem';
@@ -8,26 +10,24 @@ import { ICartItem } from '../../models/cartItem';
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.scss']
 })
-export class ProductDetailComponent implements OnInit, AfterViewInit {
-
-
+export class ProductDetailComponent implements OnInit {
 
   public idProduct: number = 0;
-  public productDetail : any;
+  public productDetail :any;
+  public temp :any;
 
-  constructor(private _commonService: CommonService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private _commonService: CommonService, private _serverHttp : ServerHttpService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) =>{
       let id = parseInt(params.get('id') || '');
       this.idProduct = id;
     });
-    this.productDetail = this._commonService.getProducts().find(p => p.id === this.idProduct);
-  }
 
-  ngAfterViewInit() {
+    this._serverHttp.getProducts().subscribe((data: PRODUCT[]) => {
+      this.productDetail = data.find(p => p.id === this.idProduct);
+    });
   }
-  
 
   activeSizeItem(event: any) {
     const sizeItem = document.querySelectorAll('.size_item');

@@ -1,7 +1,8 @@
+import { ServerHttpService } from './../Services/server-http.service';
 import { CommonService } from '../Services/common.service';
 import { PRODUCT } from './../models/product';
 import { SLIDE } from './../models/slide';
-import { Component, OnInit, AfterContentChecked, ViewEncapsulation, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterContentChecked, AfterViewChecked,ViewEncapsulation, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { SwiperComponent } from "swiper/angular";
 import SwiperCore, { Autoplay, Pagination, Navigation } from "swiper";
@@ -17,14 +18,12 @@ SwiperCore.use([Autoplay, Pagination, Navigation]);
   encapsulation: ViewEncapsulation.None,
 })
 
-export class MainPageComponent implements OnInit, AfterContentChecked {
+export class MainPageComponent implements OnInit, AfterContentChecked, AfterViewChecked {
 
   genderList: any = [];
 
   public productForHim: PRODUCT[] = [];
   public productForHer: PRODUCT[] = [];
-  public productForHimWeekly: PRODUCT[] = [];
-  public productForHerWeekly: PRODUCT[] = [];
 
   public slides: SLIDE[] = []; 
 
@@ -34,17 +33,17 @@ export class MainPageComponent implements OnInit, AfterContentChecked {
     { id: "3", title: "Những items làm từ vải Linen mà bạn không thể bỏ qua", image: "background-image:url(../../assets/images/main-page/ssstory/1636339044098.jpeg)" },
     { id: "4", title: "5 mẹo bất hủ để bảo quản chiếc áo trắng của bạn", image: "background-image:url(../../assets/images/main-page/ssstory/1636338432145.jpeg)" },
   ]
-  constructor(private _commonService: CommonService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private _commonService: CommonService, private _serverHttp : ServerHttpService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.genderList = this._commonService.getGenderRouting();
-    this.productForHim = this._commonService.getProducts().filter(e => e.gender === "him");
-    this.productForHer = this._commonService.getProducts().filter(e => e.gender === "her");
+    this._serverHttp.getProducts().subscribe((data: PRODUCT[]) => {
+      this.productForHim = data.filter(e => e.gender === "him"); 
+      this.productForHer = data.filter(e => e.gender === "her");
+    });
 
-    for (let i = 0; i < 8; i++) {
-      this.productForHimWeekly.push(this.productForHim[i]);
-      this.productForHerWeekly.push(this.productForHer[i]);
-    }
+    this.genderList = this._commonService.getGenderRouting();
+    // this.productForHim = this._commonService.getProducts().filter(e => e.gender === "him");
+    // this.productForHer = this._commonService.getProducts().filter(e => e.gender === "her");
 
   };
 
@@ -83,6 +82,9 @@ export class MainPageComponent implements OnInit, AfterContentChecked {
     }
   }
 
+  ngAfterViewChecked():void {
+
+  }
   activeCategory(event:any):void {
     const categoryItem = document.querySelectorAll(".category-item");
     const slidesDOM = document.querySelectorAll('.sliderProduct');
