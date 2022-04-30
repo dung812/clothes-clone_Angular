@@ -61,5 +61,13 @@ export class DashboardComponent implements OnInit {
     event.target.classList.add("active");
   }
 
+  openModalAddProduct() {
+    const modal = document.querySelector('#authentication-modal');
+    modal?.classList.remove("hidden");
+  }
 
+  closeModalAddProduct() {
+    const modal = document.querySelector('#authentication-modal');
+    modal?.classList.add("hidden");
+  }
 }
