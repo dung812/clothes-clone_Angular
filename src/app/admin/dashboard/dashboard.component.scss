@@ -1,0 +1,11 @@
+// @import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
+
+.icon-badge {
+    @apply relative after:content-[''] after:h-2 after:w-2 after:rounded-full after:bg-red-600 after:absolute after:top-2 after:left-4
+}
+
+.tab-title.active {
+    @apply text-blue-600
+}
+
+

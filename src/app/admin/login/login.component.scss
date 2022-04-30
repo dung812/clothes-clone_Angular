@@ -1,0 +1,11 @@
+.wrapper-login {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}

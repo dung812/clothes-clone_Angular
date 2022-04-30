@@ -1,0 +1,29 @@
+<div class="wrapper-login text-gray-600 text-xs md:text-base">
+    <img src="../../../assets/images/favicon/icon.png" class="mx-auto w-[35%] mb-3" alt="">
+    <div class="px-[24px] py-[24px] md:px-[38px] md:py-[42px] min-w-[200px] md:min-w-[400px] border border-gray-300 shadow-2xl">
+        
+        <form [formGroup]="loginAdminForm" (ngSubmit)="submitFormAdmin($event)">
+            <p class="text-base text-red-500 text-center mb-2 hidden" id="message_error">Tên đăng nhập và mật khẩu không đúng</p>
+
+            <div class="form-group mb-4">
+                <label for="username">Tên đăng nhập</label>
+                <input class="block border border-gray-400 w-full px-2 py-1 md:text-base" type="text" formControlName="username" id="username" required />
+            </div>
+            <div class="form-group mb-4">
+                <label for="password">Mật khẩu</label>
+                <input class="block border border-gray-400 w-full px-2 py-1 md:text-base" type="password" formControlName="password" id="password" required />
+            </div>
+            <div class="form-group mb-4 md:flex md:items-center justify-between">
+                <div class="mb-2 md:md-0">
+                    <input type="checkbox" id="forgot" class="mr-1" />
+                    <label for="forgot">Ghi nhớ đăng nhập</label>
+                </div>
+                <button type="submit" class="bg-blue-600 text-white p-2 rounded" [disabled]="!loginAdminForm.valid">Đăng nhập</button>
+            </div>
+        </form>
+    </div>
+    <div class="container mx-auto px-5">
+        <p class="my-5 cursor-pointer">Quên mật khẩu?</p>
+        <p class="my-5 cursor-pointer" (click)="routingBackToMenu()"><i class="uil uil-arrow-left"></i> Quay trở về cửa hàng</p>
+    </div>
+</div>

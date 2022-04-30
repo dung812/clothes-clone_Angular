@@ -1,0 +1,148 @@
+<div class="bg-blue-700 text-white flex justify-between items-center px-14 py-5">
+    <p class="text-3xl font-bold">Quản lý cửa hàng</p>
+    <div class="flex items-center text-sm">
+        <i class="uil uil-envelope mr-7 icon-badge text-2xl cursor-pointer"></i>
+        <i class="uil uil-bell mr-7 icon-badge text-2xl cursor-pointer"></i>
+        <!-- <p class="m-0 mr-7">Thành viên đăng nhập: <span class="font-semibold">admin</span></p> -->
+        <div class="mr-7 flex items-center">
+            <div class="w-[50px] mr-2">
+                <img src="../../../assets/images/admin-icon.png" alt="" class="max-w-full max-h-full block">
+            </div>
+            <div>
+                <p class="text-base font-semibold">Nguyễn Dũng</p>
+                <p>Manager</p>
+            </div>
+        </div>
+        <div class="px-2 py-1 bg-orange-400 text-white hover:opacity-80 cursor-pointer" (click)="logout()">Đăng xuất</div>
+    </div>
+</div>
+<div class="grid grid-cols-8">
+    <div class="col-span-2 bg-blue-200 min-h-screen">
+        <ul>
+            <li class="tab-title active p-5 text-[18px] hover:text-blue-600 cursor-pointer" (click)="activeContentDashboard($event)" data-title="dashboard"><i class="text-2xl mr-4 uil uil-estate" ></i>Bảng điều khiển</li>
+            <li class="tab-title p-5 text-[18px] hover:text-blue-600 cursor-pointer" (click)="activeContentDashboard($event)" data-title="product"><i class="text-2xl mr-4 uil uil-cube"></i>Sản phẩm</li>
+            <li class="tab-title p-5 text-[18px] hover:text-blue-600 cursor-pointer" (click)="activeContentDashboard($event)" data-title="order"><i class="text-2xl mr-4 uil uil-invoice"></i>Hóa đơn</li>
+            <li class="p-5 text-[18px] hover:text-blue-600 cursor-pointer"><i class="text-2xl mr-4 uil uil-social-distancing"></i>Khách hàng</li>
+            <li class="p-5 text-[18px] hover:text-blue-600 cursor-pointer"><i class="text-2xl mr-4 uil uil-chart-line"></i>Thống kê bán hàng</li>
+            <li class="p-5 text-[18px] hover:text-blue-600 cursor-pointer" (click)="routingBackToMenu()"><i class="text-2xl mr-4 uil uil-shop"></i>Quay lại cửa hàng</li>
+        </ul>
+    </div>
+    <div class="col-span-6">
+        <div class="tab-content px-8 py-10" data-content="dashboard">
+            <p class="text-center text-xl font-bold">Chào mừng bạn đến với trang quản trị cửa hàng clothes world</p>
+            <p>Ở đây hiển thị các biểu đồ...</p>
+        </div>
+        <div class="tab-content hidden px-8 py-10" data-content="product">
+            <div class="flex items-center justify-between mb-8">
+                <div>
+                    <p class="text-xl font-semibold">Quản lý sản phẩm</p>
+                    <p>Danh sách các sản phẩm của cửa hàng, thông tin hiển thị bao gồm tên sản phẩm, ảnh, giá, giới tính.</p> 
+                </div>
+                <div class="px-3 py-2 rounded bg-blue-600 text-white hover:opacity-70 cursor-pointer">Thêm sản phẩm</div>
+            </div>
+
+            <div class="relative overflow-x-auto shadow-md rounded">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead class="text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">
+                                Tên sản phẩm
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Ảnh
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Giá
+                            </th>
+                            <th scope="col" class="px-4 py-3">
+                                Giới tính
+                            </th>
+                            <th scope="col" class="px-4 py-3">
+                                <span class="sr-only">Edit</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" *ngFor="let product of products">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                                {{ product.name }}
+                            </th>
+                            <td class="px-6 py-4 w-[124px]">
+                                <img [src]="product.image[0]" [alt]="product.alt" class="max-w-full max-h-full block">
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ product.price | currency:'VND'  }}
+                            </td>
+                            <td class="px-4 py-4">
+                                {{ product.gender }}
+                            </td>
+                            <td class="px-4 py-4 text-right">
+                                <p class="inline-block font-medium text-blue-600 dark:text-blue-500 hover:underline mr-5">Sửa</p>
+                                <p class="inline-block font-medium text-blue-600 dark:text-blue-500 hover:underline">Xóa</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="tab-content hidden px-8 py-10" data-content="order">
+            <div class="mb-8">
+                <p class="text-xl font-semibold">Quản lý hóa đơn</p>
+                <p>Danh sách các hóa đơn của cửa hàng, bạn có thể duyệt hóa đơn hoặc xóa hóa đơn.</p> 
+            </div>
+
+            <div class="relative overflow-x-auto shadow-md rounded">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead class="text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">
+                                Mã hóa đơn
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Ngày đặt
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Trạng thái
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Tên khách hàng
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Địa chỉ
+                            </th>
+                            <th scope="col" class="px-4 py-3">
+                                <span class="sr-only">Edit</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" *ngFor="let order of orders">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                                {{ order.id }}
+                            </th>
+                            <td class="px-6 py-4">
+                                {{ order.dayOrder }}
+                            </td>
+                            <td class="px-6 py-4">
+                                <span *ngIf="order.status === true; then condition1 else condition2"></span>
+                                <ng-template #condition1>Đã duyệt</ng-template>
+                                <ng-template #condition2>Chưa duyệt</ng-template>
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ order.orderer }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ order.address }}
+                            </td>
+                            <td class="px-4 py-4 text-right">
+                                <p class="inline-block font-medium text-blue-600 dark:text-blue-500 hover:underline mr-5">Duyệt</p>
+                                <p class="inline-block font-medium text-blue-600 dark:text-blue-500 hover:underline">Xóa</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

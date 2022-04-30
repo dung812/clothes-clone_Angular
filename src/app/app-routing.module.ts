@@ -1,3 +1,5 @@
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { LoginComponent } from './admin/login/login.component';
 import { SuccessOrderComponent } from './success-order/success-order.component';
 import { CartComponent } from './cart/cart.component';
 import { BlogDetailComponent } from './blog/blog-detail/blog-detail.component';
@@ -20,6 +22,8 @@ const routes: Routes = [
     { path: 'blog-detail', component: BlogDetailComponent },
     { path: "success-order", component: SuccessOrderComponent },
     { path: "pagenotfound", component: PageNotFoundComponent },
+    { path: "admin", component: LoginComponent },
+    { path: "dashboard", component: DashboardComponent },
     { path: "**", component: PageNotFoundComponent },
 ];
 

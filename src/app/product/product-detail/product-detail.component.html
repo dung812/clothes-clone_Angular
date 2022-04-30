@@ -1,7 +1,7 @@
 <div class="grid grid-cols-1 gap-3 md:gap-0 md:grid-cols-6">
     <div class="image-detail-s md:hidden">
         <ul>
-            <li *ngFor="let image of productDetail.image">
+            <li *ngFor="let image of productDetail?.image">
                 <img [src]="image" [alt]="productDetail.alt">
             </li>
         </ul>
@@ -9,7 +9,7 @@
 
     <div class="image-detail-l hidden md:block md:col-span-4">
         <div class="grid grid-cols-2">
-            <div *ngFor="let image of productDetail.image">
+            <div *ngFor="let image of productDetail?.image">
                 <img [src]="image" [alt]="productDetail.alt">
             </div>
         </div>

@@ -16,7 +16,7 @@ export class ServerHttpService {
     })
   };
 
-  private REST_API_SERVER = 'https://shopping-angular-api.herokuapp.com'; 
+  private REST_API_SERVER = 'https://db-clothes-angular.herokuapp.com'; 
   constructor(private httpClient: HttpClient) { }
 
   public getProducts(): Observable<any> {
