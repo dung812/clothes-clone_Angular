@@ -12,3 +12,26 @@
     background-color: rgba(0,0,0,0.5);
 }
 
+.image-loader{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    animation: spin 1s infinite linear forwards;
+    width: 50px;
+    height: 50px;
+    border: 5px solid #6A5AF9;
+    border-right: 5px solid transparent;
+    border-radius: 50%;
+  }
+  
+@keyframes spin {
+    to {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+button:disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+}

@@ -1,3 +1,4 @@
+import { ServerHttpService } from './../Services/server-http.service';
 import { CommonService } from './../Services/common.service';
 import { Component, OnInit, AfterContentChecked } from '@angular/core';
 import { ICartItem } from '../models/cartItem';
@@ -14,7 +15,7 @@ export class CartComponent implements OnInit, AfterContentChecked {
 
   public totalPrice: number = 0;
 
-  constructor(private router: Router, private _commonService: CommonService) {}
+  constructor(private router: Router, private _commonService: CommonService, private _serverHttp: ServerHttpService) {}
 
   ngOnInit(): void {
     this.totalPrice = this.cartList.reduce(function(previousValue, currentValue) {
@@ -96,12 +97,23 @@ export class CartComponent implements OnInit, AfterContentChecked {
 
   }
 
+  public addOrderHTTP(data: any): void {
+    this._serverHttp.addOrder(data).subscribe((data) => {
+    });
+  }
 
   submitForm() {
     const fullName = document.querySelector('input[name="name"]') as HTMLInputElement;
     const email = document.querySelector('input[name="email"]')  as HTMLInputElement;
     const phone =  document.querySelector('input[name="phone"]')  as HTMLInputElement;
     const address =  document.querySelector('input[name="address"]')  as HTMLInputElement;
+
+    const infor = {
+      orderer: fullName.value,
+      phone: phone.value,
+      address: address.value
+    }
+    const now = new Date();
 
     if(!fullName.value || !email.value || !phone.value || !address.value){
       alert("Vui lòng điền đầy đủ thông tin");
@@ -111,6 +123,9 @@ export class CartComponent implements OnInit, AfterContentChecked {
       alert("Giỏ hàng rỗng");
       return;
     }
+ 
+    this.addOrderHTTP({dayOrder: now.toLocaleDateString("vi-Vi"), status: false, totalPrice: this.totalPrice, products: this.cartList, ...infor}); // Save order
+    
     this.router.navigate(['success-order']);
     this._commonService.resetItemCart();
   }

@@ -1,9 +1,9 @@
 export interface PRODUCT {
-    id: number;
+    id?: number;
     name: string;
     image: any;
     alt: string;
     price: number;
-    color: number;
+    color?: number;
     gender: string;
 }
