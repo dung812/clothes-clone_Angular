@@ -18,6 +18,23 @@ export class DashboardComponent implements OnInit {
   public selectedGender = this.gender[0];
   public listImage = [];
   public updateId = null;
+  public orderDetail: IOrder = {
+    id: 0,
+    dayOrder: '',
+    status: true,
+    totalPrice: 0,
+    products: [{
+      id: 0,
+      name: '',
+      image: '',
+      price: 0,
+      quanlity: 0
+    }],
+    orderer: '',
+    phone: 0,
+    address: '',
+    email: ''
+  };
 
   public productForm = this.fb.group({
     name: [''],
@@ -127,6 +144,17 @@ export class DashboardComponent implements OnInit {
   closeModalProduct() {
     const modal = document.querySelector('#authentication-modal');
     modal?.classList.add('hidden');
+  }
+
+  closeOrderModal() {
+    const modal = document.querySelector('#order-modal');
+    modal?.classList.add('hidden');
+  }
+  
+  openOrderModal(order: IOrder) {
+    const modal = document.querySelector('#order-modal');
+    modal?.classList.remove('hidden');
+    this.orderDetail = order;
   }
 
   // Handle delete product
@@ -251,6 +279,8 @@ export class DashboardComponent implements OnInit {
           }
         });
         this.getListOrderHTTP();
+        const modal = document.querySelector('#order-modal');
+        modal?.classList.add('hidden');
       });
     }
   
@@ -258,9 +288,11 @@ export class DashboardComponent implements OnInit {
       let message = confirm("Bạn có chắc muốn xóa đơn hàng này?");
       if(message) {
         this._serverHttp.deleteOrder(orderId).subscribe(data => {
-          alert("Xóa thành công đơn hàng");
+          alert("Xóa thành công đơn hàng: #HD" + data);
           this.orders = this.orders.filter(item => item.id !== orderId);
           this.getListOrderHTTP(); 
+          const modal = document.querySelector('#order-modal');
+          modal?.classList.add('hidden');
         })
       }
     }

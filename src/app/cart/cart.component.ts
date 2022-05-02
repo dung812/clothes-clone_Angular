@@ -111,7 +111,8 @@ export class CartComponent implements OnInit, AfterContentChecked {
     const infor = {
       orderer: fullName.value,
       phone: phone.value,
-      address: address.value
+      address: address.value,
+      email: email.value
     }
     const now = new Date();
 

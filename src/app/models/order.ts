@@ -3,8 +3,17 @@ export interface IOrder {
     dayOrder: string;
     status: boolean;
     totalPrice: number;
-    product: [];
+    products: [
+        {
+            id: number,
+            name: string,
+            image: string,
+            price: number,
+            quanlity: number
+        }
+    ];
     orderer: string;
     phone: number;
     address: string;
+    email: string;
 }
