@@ -12,6 +12,10 @@ import { PRODUCT } from './../../models/product';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import * as jspdf from 'jspdf';
+import html2canvas from 'html2canvas';
+
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -311,5 +315,20 @@ export class DashboardComponent implements OnInit {
         modal?.classList.add('hidden');
       });
     }
+  }
+
+  downloadpdf() {
+    let element = document.getElementById('order-info');
+    element && html2canvas(element).then((canvas) => {
+      var imgData = canvas.toDataURL('image/png');
+      var doc = new jspdf.jsPDF();
+
+      var width = doc.internal.pageSize.getWidth();
+      var height = doc.internal.pageSize.getHeight();
+
+      doc.addImage(imgData, 0, 0, width, height);
+
+      doc.save("image.pdf");
+    })
   }
 }
