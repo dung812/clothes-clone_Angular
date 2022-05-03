@@ -125,7 +125,7 @@ export class CartComponent implements OnInit, AfterContentChecked {
       return;
     }
  
-    this.addOrderHTTP({dayOrder: now.toLocaleDateString("vi-Vi"), status: false, totalPrice: this.totalPrice, products: this.cartList, ...infor}); // Save order
+    this.addOrderHTTP({dayOrder: now.toLocaleString(), status: false, totalPrice: this.totalPrice, products: this.cartList, ...infor}); // Save order
     
     this.router.navigate(['success-order']);
     this._commonService.resetItemCart();

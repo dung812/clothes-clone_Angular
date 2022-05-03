@@ -1,4 +1,10 @@
-import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  FormBuilder,
+  FormArray,
+} from '@angular/forms';
 import { IOrder } from './../../models/order';
 import { ICartItem } from './../../models/cartItem';
 import { ServerHttpService } from './../../Services/server-http.service';
@@ -23,17 +29,19 @@ export class DashboardComponent implements OnInit {
     dayOrder: '',
     status: true,
     totalPrice: 0,
-    products: [{
-      id: 0,
-      name: '',
-      image: '',
-      price: 0,
-      quanlity: 0
-    }],
+    products: [
+      {
+        id: 0,
+        name: '',
+        image: '',
+        price: 0,
+        quanlity: 0,
+      },
+    ],
     orderer: '',
     phone: 0,
     address: '',
-    email: ''
+    email: '',
   };
 
   public productForm = this.fb.group({
@@ -46,7 +54,11 @@ export class DashboardComponent implements OnInit {
     image: this.fb.array([this.fb.control('')]),
   });
 
-  constructor( private router: Router, private _serverHttp: ServerHttpService, private fb: FormBuilder ) {
+  constructor(
+    private router: Router,
+    private _serverHttp: ServerHttpService,
+    private fb: FormBuilder
+  ) {
     document.title = 'Bảng điều khiển website';
     const favIcon = document.querySelector('#favIcon') as HTMLLinkElement;
     favIcon.href = '../../../assets/images/favicon/admin.png';
@@ -78,7 +90,6 @@ export class DashboardComponent implements OnInit {
     this.getListOrderHTTP();
   }
 
-
   // HANDLE API
   public getListOrderHTTP(): void {
     this._serverHttp.getOrders().subscribe((data) => {
@@ -90,7 +101,6 @@ export class DashboardComponent implements OnInit {
       this.products = data.sort((a: any, b: any) => (a.id < b.id ? 1 : -1)); // Sắp xếp giảm dần id (mới lên đầu)
     });
   }
-
 
   routingBackToMenu() {
     const header = document.querySelector('header');
@@ -128,17 +138,17 @@ export class DashboardComponent implements OnInit {
   openModalProduct() {
     this.resetForm();
     this.updateId = null;
-    const titleModal = document.querySelector("#title-modal") as HTMLElement;
-    titleModal.textContent = "Thêm mới sản phẩm";
+    const titleModal = document.querySelector('#title-modal') as HTMLElement;
+    titleModal.textContent = 'Thêm mới sản phẩm';
     const modal = document.querySelector('#authentication-modal');
     modal?.classList.remove('hidden');
 
-    // Hide add image area  
-    const addImageArea = document.querySelector("#add_images");
-    addImageArea?.classList.remove("hidden");
-    
-    const displayImageArea = document.querySelector("#display_images");
-    displayImageArea?.classList.add("hidden");
+    // Hide add image area
+    const addImageArea = document.querySelector('#add_images');
+    addImageArea?.classList.remove('hidden');
+
+    const displayImageArea = document.querySelector('#display_images');
+    displayImageArea?.classList.add('hidden');
   }
 
   closeModalProduct() {
@@ -150,7 +160,7 @@ export class DashboardComponent implements OnInit {
     const modal = document.querySelector('#order-modal');
     modal?.classList.add('hidden');
   }
-  
+
   openOrderModal(order: IOrder) {
     const modal = document.querySelector('#order-modal');
     modal?.classList.remove('hidden');
@@ -159,11 +169,11 @@ export class DashboardComponent implements OnInit {
 
   // Handle delete product
   deleteProduct(productId: number) {
-    let message = confirm("Bạn có chắc muốn xóa sản phẩm này?");
-    if(message) {
+    let message = confirm('Bạn có chắc muốn xóa sản phẩm này?');
+    if (message) {
       // this.deleteProductHTTP(productId);
       this._serverHttp.deleteProduct(productId).subscribe((data) => {
-      this.products = this.products.filter(item => item.id !== productId);
+        this.products = this.products.filter((item) => item.id !== productId);
         alert('Xóa thành công');
       });
       // this.getListProductHTTP();
@@ -171,8 +181,8 @@ export class DashboardComponent implements OnInit {
   }
   // Handle edit product
   editProduct(productId: number) {
-    const titleModal = document.querySelector("#title-modal") as HTMLElement;
-    titleModal.textContent = "Thêm mới sản phẩm";
+    const titleModal = document.querySelector('#title-modal') as HTMLElement;
+    titleModal.textContent = 'Thêm mới sản phẩm';
     this._serverHttp.getSingleProduct(productId).subscribe((data) => {
       this.listImage = data.image;
       // Load data in form
@@ -182,17 +192,17 @@ export class DashboardComponent implements OnInit {
         alt: data.alt,
         color: data.color,
         gender: data.gender,
-        });
+      });
       this.updateId = data.id;
     });
     this.openModalProduct();
 
     // Hide add image area
-    const addImageArea = document.querySelector("#add_images");
-    addImageArea?.classList.add("hidden");
+    const addImageArea = document.querySelector('#add_images');
+    addImageArea?.classList.add('hidden');
 
-    const displayImageArea = document.querySelector("#display_images");
-    displayImageArea?.classList.remove("hidden");
+    const displayImageArea = document.querySelector('#display_images');
+    displayImageArea?.classList.remove('hidden');
   }
 
   // Handle add product
@@ -203,8 +213,8 @@ export class DashboardComponent implements OnInit {
       alt: '',
       color: null,
       gender: '',
-      image: []
-      });
+      image: [],
+    });
     this.productForm.reset();
   }
 
@@ -233,35 +243,39 @@ export class DashboardComponent implements OnInit {
       console.log(this.productForm); // lấy hết value input trả ra 1 object
       this.productForm.controls['gender'].setValue(this.selectedGender); // Sửa giá trị 1 key trong object
     */
-    const newProduct =  this.createNewData();
+    const newProduct = this.createNewData();
 
     // Save data
-    if(this.updateId) {
-      let newListImage = []
-      for(let i = 0; i < this.listImage.length; i++) {
-        const input = document.querySelector(`#imageList-${i}`)as HTMLInputElement;
+    if (this.updateId) {
+      let newListImage = [];
+      for (let i = 0; i < this.listImage.length; i++) {
+        const input = document.querySelector(
+          `#imageList-${i}`
+        ) as HTMLInputElement;
         newListImage.push(input.value);
       }
       newProduct.image = newListImage;
-      this._serverHttp.modifyProduct(this.updateId, newProduct).subscribe((data) => {
-        this.products.forEach(item => {
-          if (item.id === this.updateId){
-            item.name = newProduct.name;
-            item.price = newProduct.price;
-            item.image = newProduct.image;
-            item.alt = newProduct.alt;
-            item.color = newProduct.color;
-            item.gender = newProduct.gender;
-          }
+      this._serverHttp
+        .modifyProduct(this.updateId, newProduct)
+        .subscribe((data) => {
+          this.products.forEach((item) => {
+            if (item.id === this.updateId) {
+              item.name = newProduct.name;
+              item.price = newProduct.price;
+              item.image = newProduct.image;
+              item.alt = newProduct.alt;
+              item.color = newProduct.color;
+              item.gender = newProduct.gender;
+            }
+          });
+          alert('Sửa thành công sản phẩm: ' + data.name);
         });
-        alert('Sửa thành công sản phẩm: ' + data.name);
-      });
-
-    }
-    else {
+    } else {
       this._serverHttp.addProduct(newProduct).subscribe((data) => {
-        this.products.push({id: this.products.length + 1, ...newProduct});
-        this.products = this.products.sort((a: any, b: any) => (a.id < b.id ? 1 : -1));
+        this.products.push({ id: this.products.length + 1, ...newProduct });
+        this.products = this.products.sort((a: any, b: any) =>
+          a.id < b.id ? 1 : -1
+        );
         alert('Thêm thành công sản phẩm: ' + data.name);
       });
       this.resetForm();
@@ -269,11 +283,13 @@ export class DashboardComponent implements OnInit {
     this.closeModalProduct();
   }
 
-    // === ORDER ====
-    checkingOrder(orderId: number) {
-      this._serverHttp.modifyOrder(orderId, {status: true}).subscribe(data => {
-        alert("Duyệt đơn hàng thành công!");
-        [...this.orders].forEach(item => {
+  // === ORDER ====
+  checkingOrder(orderId: number) {
+    this._serverHttp
+      .modifyOrder(orderId, { status: true })
+      .subscribe((data) => {
+        alert('Duyệt đơn hàng thành công!');
+        [...this.orders].forEach((item) => {
           if (item.id === orderId) {
             item.status = true;
           }
@@ -282,18 +298,18 @@ export class DashboardComponent implements OnInit {
         const modal = document.querySelector('#order-modal');
         modal?.classList.add('hidden');
       });
+  }
+
+  deleteOrder(orderId: number) {
+    let message = confirm('Bạn có chắc muốn xóa đơn hàng này?');
+    if (message) {
+      this._serverHttp.deleteOrder(orderId).subscribe((data) => {
+        alert('Xóa thành công đơn hàng!');
+        this.orders = this.orders.filter((item) => item.id !== orderId);
+        this.getListOrderHTTP();
+        const modal = document.querySelector('#order-modal');
+        modal?.classList.add('hidden');
+      });
     }
-  
-    deleteOrder(orderId: number) {
-      let message = confirm("Bạn có chắc muốn xóa đơn hàng này?");
-      if(message) {
-        this._serverHttp.deleteOrder(orderId).subscribe(data => {
-          alert("Xóa thành công đơn hàng: #HD" + data);
-          this.orders = this.orders.filter(item => item.id !== orderId);
-          this.getListOrderHTTP(); 
-          const modal = document.querySelector('#order-modal');
-          modal?.classList.add('hidden');
-        })
-      }
-    }
+  }
 }
