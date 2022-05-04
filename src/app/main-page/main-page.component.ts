@@ -123,6 +123,11 @@ export class MainPageComponent implements OnInit, AfterContentChecked, AfterView
   showProductDetail(product: any) {
     this.router.navigate(['product-detail', product.id]);
   }
+
+  routingAltBanner(id: number) {
+    this.router.navigate(['product-detail', id]);
+  }
+
   scrollTop() {
     window.scrollTo(0,0);
   }

@@ -9,7 +9,7 @@
             disableOnInteraction: false
             }">
         <ng-template swiperSlide *ngFor="let slide of slides">
-            <a class="h-[75vh] sm:h-screen"><img [src]="slide.src" [alt]="slide.alt" /></a>
+            <a class="h-[75vh] sm:h-screen cursor-pointer" (click)="routingAltBanner(1); scrollTop()"><img [src]="slide.src" [alt]="slide.alt" /></a>
         </ng-template>
     </swiper>
   
@@ -34,7 +34,8 @@
     
             <swiper data-content="him" class="sliderProduct"
                 [slidesPerView]="2.5"
-                [spaceBetween]="20"
+                [spaceBetween]="30"
+                [loop]="true"
                 [breakpoints]="{
                     '640': {
                     slidesPerView: 3.5,
@@ -49,7 +50,6 @@
                     spaceBetween: 20
                     }
                 }"
-                [loop]="true"
                 [autoplay]="{
                 delay: 1500,
                 disableOnInteraction: false
