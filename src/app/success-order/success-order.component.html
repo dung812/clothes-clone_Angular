@@ -10,7 +10,7 @@
             <div class="border-t border-gray-400 border-dashed py-3">
                 <div class="cart_item flex justify-between mb-2 text-base" *ngFor="let item of cartList">
                     <p class="w-[60%]">{{ item.name | titlecase }} (Qty: {{ item.quanlity }})</p>
-                    <p class="text-left">{{ item.price | currency:'VND' }}</p>
+                    <p class="text-left">{{ item.quanlity * item.price | currency:'VND' }}</p>
                 </div>
 
                 <div class="mt-5">     
