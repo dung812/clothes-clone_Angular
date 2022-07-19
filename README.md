@@ -49,8 +49,8 @@ Xây dựng một project mini đơn giản để ứng dụng kiến thức đ�
 * …
 
 ## Video demo
-[Youtube](https://www.youtube.com/watch?v=AWJ1wD6ciws)
-<a href="https://www.youtube.com/watch?v=AWJ1wD6ciws" target="_blank"><img src="http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg" 
+[Youtube](https://www.youtube.com/watch?v=7aDkhCzZJcw)
+<a href="https://www.youtube.com/watch?v=7aDkhCzZJcw" target="_blank"><img src="http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg" 
 alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 
 # ClothesClone
