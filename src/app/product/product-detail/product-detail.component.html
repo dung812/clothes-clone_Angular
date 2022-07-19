@@ -18,14 +18,14 @@
     <div class="detail-product md:col-span-2 container mx-auto px-5 md:px-5">
         <div class="pt-4">
             <div class="mb-[24px] flex justify-between md:block">
-                <p class="text-xl font-semibold">{{ productDetail.name }}</p>
-                <p class="text-2xl font-bold">{{ productDetail.price | currency:'VND' }}</p>
+                <p class="text-xl font-semibold">{{ productDetail?.name }}</p>
+                <p class="text-2xl font-bold">{{ productDetail?.price | currency:'VND' }}</p>
             </div>
 
             <div class="mb-[24px]">
                 <p class="text-base font-semibold mb-[10px]">Chọn Màu:</p>
                 <div class="grid grid-cols-4 gap-[16px] overflow-hidden">
-                    <img [src]="productDetail.image[0]" [alt]="productDetail.alt" class="w-[80px] h-auto border border-black cursor-pointer">
+                    <img [src]="productDetail?.image[0]" [alt]="productDetail?.alt" class="w-[80px] h-auto border border-black cursor-pointer">
                 </div>
             </div>
             
