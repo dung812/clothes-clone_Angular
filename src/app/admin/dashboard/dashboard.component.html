@@ -126,7 +126,7 @@
                                 {{ order.dayOrder }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ order.totalPrice }}
+                                {{ order.totalPrice | currency:'VND' }}
                             </td>
                             <td class="px-6 py-4 w-[13%]">
                                 <span *ngIf="order.status === true; then condition1 else condition2"></span>
@@ -345,7 +345,7 @@
                                         <td class="px-6 py-4">
                                             -0
                                         </td>
-                                        <td class="px-6 py-4">
+                                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                             {{ orderDetail.totalPrice | currency:'VND' }}
                                         </td>
                                     </tr>
@@ -358,8 +358,7 @@
                         <button (click)="downloadpdf()" data-modal-toggle="large-modal" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"><i class="uil uil-print"></i> In đơn hàng</button>
                         
                         <button *ngIf="!orderDetail.status else removeCheck" (click)="checkingOrder(orderDetail.id)" data-modal-toggle="large-modal" type="button" class="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5  focus:z-10"><i class="uil uil-file-check-alt"></i> Duyệt đơn hàng</button>
-                        <ng-template #removeCheck>
-                        </ng-template>
+                        <ng-template #removeCheck></ng-template>
 
                         <button (click)="deleteOrder(orderDetail.id)" data-modal-toggle="large-modal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10"><i class="uil uil-trash-alt"></i> Xóa đơn hàng</button>
                     </div>

@@ -142,8 +142,12 @@ export class DashboardComponent implements OnInit {
   openModalProduct() {
     this.resetForm();
     this.updateId = null;
-    const titleModal = document.querySelector('#title-modal') as HTMLElement;
-    titleModal.textContent = 'Thêm mới sản phẩm';
+
+    if (this.updateId === null) {
+      const titleModal = document.querySelector('#title-modal') as HTMLElement;
+      titleModal.textContent = 'Thêm mới sản phẩm';
+    }
+
     const modal = document.querySelector('#authentication-modal');
     modal?.classList.remove('hidden');
 
@@ -185,8 +189,6 @@ export class DashboardComponent implements OnInit {
   }
   // Handle edit product
   editProduct(productId: number) {
-    const titleModal = document.querySelector('#title-modal') as HTMLElement;
-    titleModal.textContent = 'Thêm mới sản phẩm';
     this._serverHttp.getSingleProduct(productId).subscribe((data) => {
       this.listImage = data.image;
       // Load data in form
@@ -200,6 +202,9 @@ export class DashboardComponent implements OnInit {
       this.updateId = data.id;
     });
     this.openModalProduct();
+
+    const titleModal = document.querySelector('#title-modal') as HTMLElement;
+    titleModal.textContent = 'Sửa thông tin sản phẩm';
 
     // Hide add image area
     const addImageArea = document.querySelector('#add_images');

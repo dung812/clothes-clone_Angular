@@ -54,8 +54,7 @@
                 delay: 1500,
                 disableOnInteraction: false
                 }">
-    
-            <ng-template swiperSlide *ngFor="let product of productForHim">
+            <ng-template #test swiperSlide *ngFor="let product of productForHim">
                 <div>
                     <a (click)="showProductDetail(product); scrollTop()">
                         <img [src]="product.image[0]" alt="" class="hover:opacity-80">
